@@ -4,6 +4,14 @@
 \usepackage[letterpaper, portrait, margin=2cm]{geometry}
 \usepackage{amsthm}
 \usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage[
+    backend=biber,
+    style=alphabetic,
+    sorting=ynt
+]{biblatex}
+
+\addbibresource{bibliography.bib}
 
 \newtheorem{definition}{Definición}
 
@@ -79,5 +87,9 @@ La bibliografía de este proyecto de investigación consiste en:
     
     \item Organización de las naciones unidas para la agricultura y la alimentación. (1990). Métodos de muestreo para las encuestas agrícolas. Food and Agriculture Organization of the United Nations. \url{http://www.fao.org/3/ca5865es/CA5865ES.pdf}
 \end{itemize}
+
+La bibliografía respecto a la elaboración de este trabajo consisten en el \textit{Manual de Elaboración y Presentación de Tesis} \cite{universidad-san-carlos-2016}.
+
+\printbibliography
 
 \end{document}
