@@ -230,7 +230,60 @@ La ilustración de arriba describe una de muchas estrategias \cite{lassaga-2011}
 
 Hay que tomar en cuenta que el muestreo sistemático no siempre produce una muestra representativa por lo dicho más arriba, esto es, cuando hay una distribución periódica de las unidades. Para los estudios ecológicos de suelos \cite{lohr-2009}: "Puede haber una topografía de crestas y surcos que daría lugar a un patrón periódico de vegetación. Si un esquema de muestreo sistemático sigue el mismo ciclo, la muestra no se comportará como una MAS".
 
+\subsection{Muestreo estratificado}
 
+Como se ha mencionado, este es uno de los temas centrales de esta investigación ya que los suelos agrícolas se pueden \textit{particionar} en lotes los cuales tienen atributos que permiten su medición y se espera poder llegar a establecerlos como homogéneos para poder elaborar el diseño del muestreo correspondiente.
+
+\bigbreak
+
+La población se debe de dividir (particionar) en \textbf{estratos} que sean disjuntos a dos. Esto viene de la clásica estratificación por capas. Así, para una población de tamaño $N$, se divide en $H$ estratos o capas con $N_h$ unidades en el estrato $H$. Es necesario conocer $N_1$, $N_2$, ... , $N_H$ y por tanto se tiene que $N_1 + N_2 + \cdot \cdot \cdot + N_H = N$.
+
+\bigbreak
+
+Para hacer un \textbf{muestreo estratificado aleatorio} como es de esperar, se toma cada estrato de $N_h$ unidades y se hacen $n_h$ mediciones aleatorias ($n_h < N_h$). Entonces el tamaño de la población se encuentra dado por $n = \sum_{i=1}^H n_i$.
+
+\bigbreak
+
+Sea $S_h$ el conjunto de $n_h$ unidades para el estrato $h$. El valor de la unidad \textit{jth} en el estrato $h$ se define como $x_{hj}$. Se siguen las siguientes valoraciones para el muestreo estratificado \cite{lohr-2009}:
+
+\bigbreak
+
+\textbf{Población total en el estrato H}
+\bigbreak
+$t_h = \sum_{j=1}^{N_h} x_{hj}$
+
+
+\bigbreak
+
+\textbf{Total de la población}
+\bigbreak
+$t = \sum_{h=1}^H t_h$
+
+
+\bigbreak
+
+\textbf{Media de la población para el estrato $h$}
+\bigbreak
+$\overline{x}_{hU} = \frac{\sum_{j=1}^{N_h} x_{hj}}{N_h} = \frac{t_h}{N_h}$
+
+
+\bigbreak
+
+\textbf{Media de la población en general}
+\bigbreak
+$\overline{x}_U = \frac{\sum_{h=1}^H \sum_{j=1}^{N_h} x_{hj}}{N} = \frac{t}{N}$
+
+
+\bigbreak
+
+\textbf{Varianza de la población en el estrato $h$}
+\bigbreak
+$S_h^2 = \sum_{j=1}^{N_h} \frac{(x_{hj} - \overline{x}_{hU})^2}{N_h - 1}$
+
+
+\bigbreak
+
+A partir de aquí, otros cálculos para los MAS se pueden aplicar para cada estrato.
 
 
 
