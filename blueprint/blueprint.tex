@@ -133,9 +133,9 @@ Demostrar un proceso en el cual se pueda crear muestras representativas de lotes
 Entre los tipos de muestreo que se han encontrado útiles para medir los suelos agrícolas se tienen:
 
 \begin{itemize}
-    \item \textbf{Muestreo Simple Aleatorio MSA:} Consiste en tomar $n$ puntos aleatorios de la población. Estos puntos deben de tener la misma probabilidad de ser escogidos para que la muestra sea representativa y se toman de forma "mezclada". Por ejemplo, la sangre esta "mezclada" en el cuerpo humano, por lo que al tomar una muestra de solo una pizca basta para hacer los análisis ya que esa pizca obtenida es igual que todas las demás.
+    \item \textbf{Muestreo Aleatorio Simple MAS:} Consiste en tomar $n$ puntos aleatorios de la población. Estos puntos deben de tener la misma probabilidad de ser escogidos para que la muestra sea representativa y se toman de forma "mezclada". Por ejemplo, la sangre esta "mezclada" en el cuerpo humano, por lo que al tomar una muestra de solo una pizca basta para hacer los análisis ya que esa pizca obtenida es igual que todas las demás.
     
-    \item \textbf{Muestreo Simple Estratificado:} Esta es una técnica de muestreo que será muy útil en el modelado de los suelos agrícolas. La población se particiona en subconjuntos de diferentes tipos y homogéneos de forma que se puede realizar un MSA en cada subconjunto homogéneo de la partición. Por ejemplo, los lotes se pueden particionar como % TODO (tipos de lotes)
+    \item \textbf{Muestreo Simple Estratificado:} Esta es una técnica de muestreo que será muy útil en el modelado de los suelos agrícolas. La población se particiona en subconjuntos de diferentes tipos y homogéneos de forma que se puede realizar un MAS en cada subconjunto homogéneo de la partición. Por ejemplo, los lotes se pueden particionar como: área forestal, con problemas, bosque, construcción, etc.
     
     \item \textbf{Muestreo sistemático:} En este muestreo se toma un punto aleatorio y se mide por cada $n$-ésima unidad de forma que se lleva un espaciado constante a partir del punto inicial. Por ejemplo, este tipo de muestreo es utilizado para medir el suelo cuando es rectangular a lo largo de su perímetro o también cuando es de forma irregular.
 \end{itemize}
@@ -204,6 +204,66 @@ Al estimar el tamaño de la muestra se tiene en cuenta otras definiciones como e
     \item Iterar estos pasos para obtener mejores valores de acuerdo a las expectativas. Si ni siquiera hay recursos disponibles para este proceso, entonces la investigación no se podrá llevar a cabo.
 \end{enumerate}
 
+\subsection{Muestreo aleatorio simple (MAS)}
+
+Este tipo de muestreo es el más básico que se puede tomar y en base a él se desarrollan en gran medida los otros tipos de muestreo más compuestos. Las condiciones para que funciones son que las unidades de la población tenga igual probabilidad de ser escogidas. Los cálculos hechos para el MAS son también extendidos por otros métodos de muestreo, ya que al final siempre conllevan con algo de aleatoriedad. 
+
+\bigbreak
+
+Es importante que el suelo sea homogéneo para realizar un muestreo simple aleatorio y probablemente también mezclar las muestras para obtener un compuesto. Para realizar el muestreo se pueden seguir varios patrones, a saber, zigzag, diagonal, etc.:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\paperwidth]{ref/sampling-patterns-srs.png}
+    \caption{Patrones de muestreo para análisis de fertilidad de suelo \cite{lassaga-2011}}
+\end{figure}
+
+Como se detalla más adelante, el terreno o lotes también se puede estratificar y realizar un MAS en cada estrato obtenido. El muestro sistemático por otra parte puede llegar a reducirse a un MAS o similar dado las condiciones apropiadas. Esto indica que el MAS es elemental para hacer otro tipo de diseño de muestreo.
+
+\bigbreak
+
+Estas son los resultados para los cálculos del MAS:
+
+\bigbreak
+\textbf{Media de la población}
+
+\bigbreak
+
+$\overline{x}_U = \frac{1}{N}(x_1 + x_2 + ... + x_N) = \frac{1}{N} \sum_{i=1}^N x_i$
+
+
+\bigbreak
+\textbf{Media de la muestra}
+
+\bigbreak
+
+$\overline{x} = \frac{1}{n}(x_1 + x_2 + ... + x_N) = \frac{1}{n} \sum_{i=1}^n x_i$
+
+
+\bigbreak
+\textbf{Varianza de la población finita} En MAS, la varianza de la muestra $s^2$ es una estimación no-alineada de la varianza para la población finita
+
+\bigbreak
+
+$\sigma ^2 = \frac{1}{N-1} \sum_{i=1}^{N} (x_i - \overline{x}_U)^2$
+
+
+\bigbreak
+\textbf{Varianza de la muestra}
+
+\bigbreak
+
+$s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \overline{x}_U)^2$
+
+
+\bigbreak
+\textbf{Total de la población}
+
+\bigbreak
+
+$t = \sum_{i=1}^N x_i = N \overline{x}_U$
+
+
 \subsection{Muestreo sistemático}
 
 Para realizar un muestreo sistemático se siguen los siguientes cálculos:
@@ -214,7 +274,7 @@ Dado el tamaño de la población $N$ y el número de muestras $n$, hacer $k=\cei
 
 \bigbreak
 
-En ciertos casos el muestreo sistemático es el mismo MAS por lo que se pueden aplicar técnicas del MSA. Otras veces funciona como un intermediario (proxy) hacia el MSA ya que como se puede notar, si la población está dispuesta de forma aleatoria entonces lo que se tendría sería básicamente un MAS. También se debe tener en cuenta que la probabilidad de un grupo de ser escogido no es la misma como en el MSA. Otro uso que puede tener este tipo de muestreo es de hacer un trabajo similar al muestreo por clúster. De estos factores depende que la muestra sea representativa ya que si la población está ordenada de acuerdo a su índice entonces la muestra no servirá (p. ej. solo salen unidades del mismo tipo al estar ordenadas por posición, si hay hombres y mujeres solo salen hombres por ser posición par). 
+En ciertos casos el muestreo sistemático es el mismo MAS por lo que se pueden aplicar técnicas del MAS. Otras veces funciona como un intermediario (proxy) hacia el MAS ya que como se puede notar, si la población está dispuesta de forma aleatoria entonces lo que se tendría sería básicamente un MAS. También se debe tener en cuenta que la probabilidad de un grupo de ser escogido no es la misma como en el MAS. Otro uso que puede tener este tipo de muestreo es de hacer un trabajo similar al muestreo por clúster. De estos factores depende que la muestra sea representativa ya que si la población está ordenada de acuerdo a su índice entonces la muestra no servirá (p. ej. solo salen unidades del mismo tipo al estar ordenadas por posición, si hay hombres y mujeres solo salen hombres por ser posición par). 
 
 \bigbreak
 
