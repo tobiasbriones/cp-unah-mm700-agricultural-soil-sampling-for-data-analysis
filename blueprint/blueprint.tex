@@ -1,8 +1,7 @@
-\documentclass{report}
+\documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage[letterpaper, portrait, margin=2cm]{geometry}
-\usepackage[style=ieee]{biblatex}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -12,7 +11,11 @@
 \usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{array}
+\usepackage[
+    backend=biber,
+    style=alphabetic,
+    sorting=ynt
+]{biblatex}
 
 \addbibresource{bibliography.bib}
 
@@ -21,25 +24,26 @@
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
 \title{Anteproyecto de Investigación: Muestro de suelo agrícola para análisis de datos mediante investigación con encuestas y modelado de diseños de muestreo eficientes}
-\author{
-Tobias Briones\\\\
-Anteproyecto de seminario de investigación presentado a la\\
-Universidad Nacional Autónoma de Honduras de la carrera de\\
-Licenciatura en Matemática
-}
+\author{Tobias Briones}
 \date{Septiembre 2021}
-
 
 \begin{document}
 
-\maketitle
-
+\makeatletter
+    \begin{titlepage}
+        \begin{center}
+            \includegraphics[width=0.3\linewidth]{ref/logo-unah.png}\\[4ex]
+            {\huge \bfseries  \@title 
+            \vspace{1cm}}\\[2ex]
+            {\LARGE  \@author}\\[50ex] 
+            {\large \@date}
+        \end{center}
+    \end{titlepage}
+\makeatother
 \thispagestyle{empty}
-\tableofcontents
-\listoffigures
 \newpage
 
-\chapter{Introducción}
+\section{Introducción}
 
 En la ciencia de datos se hacen procesos complicados para obtener valor a partir de los datos crudos de los usuarios de forma que se puedan entrenar modelos para hacer predicciones, prescripciones e investigación de los problemas de las empresas en base a caso por caso. Uno de los primeros pasos en el proceso consiste en obtener datos existentes y que sufran una transformación para que se filtren o curen y por tanto se obtengan datos relevantes al estudio. Así como determinar la clasificación correcta de los datos, determinar variables de estudio, desnormalizar bases de datos, encontrar patrones y establecer  interpretaciones \cite{university-of-wisconsin-data-science-2021}. Debido a estos retos técnicos, el analista de datos debe de contar como entrada con todos los datos e historiales de la empresa que se va a analizar en ese dominio.
 
@@ -90,7 +94,7 @@ No son objetivos de este trabajo:
     \item Buscar resultados en la parte de ciencia de datos. El contexto de este trabajo consiste en obtener resultados para muestreo de lotes los cuales puedan ser utilizados en el campo de la ciencia de datos posteriormente.
 \end{itemize}
 
-\chapter{Planteamiento del problema}
+\section{Planteamiento del problema}
 
 \section{Hipótesis}
 
@@ -144,14 +148,16 @@ Demostrar un proceso en el cual se pueda crear muestras representativas de lotes
 
 \section{Población}
 
+La población que se tomará, en términos generales, será el conjunto de todos los lotes del terreno.
 
-\section{Muestra}
+\subsection{Muestra}
 
+Como muestra se deberá seleccionar la configuración adecuada de acuerdo a lo que dicte la metodología realizada en este trabajo.
 
 \section{Metodología}
 
 
-\chapter{Marco teórico}
+\section{Marco teórico}
 
 Entre los tipos de muestreo que se han encontrado útiles para medir los suelos agrícolas se tienen:
 
