@@ -164,6 +164,18 @@ La metodología para llevar a cabo este proyecto es de carácter mixta, es decir
 
 \chapter{Marco teórico}
 
+El muestreo surge de la necesidad de reducir la cantidad de candidatos que van a ser sometidos a un análisis estadístico siempre que estos representen al total de la población en la que pertenecen, es decir, que se obtengan resultados muy similares al hacer el estudio bajo esa muestra como si si hicieran con toda la población. El problema claramente es que las poblaciones (total de individuos de interés para dicho estudio) son a menudo demasiado grandes. Un buen muestreo permite no tener que estudiar a todos los elementos de una población. 
+
+\bigbreak
+
+Como ejemplificación, tenemos que en este estudio, la entrada del sistema es un conjunto de datos del usuario que es ya un muestreo realizado previamente por este. Como se sabe, en la profesión de la ciencia de datos, una de las etapas primeras es obtener e identificar los datos útiles previo al análisis \cite{university-of-wisconsin-data-science-2021}. Los modelos que se deben entrenar llevan una sobrecarga en el tamaño de las entradas que se obtienen por lo que con la definición de muestra dada arriba, se tiene que, se ha de obtener una muestra de los \say{datos sucios} proveídos por el usuario a fin de conseguir una carga menor para los modelos de analítica y produciendo los mismos resultados, esto es, minimizar los datos de entrada de los modelos de ciencia de datos para estudios agrícolas, tema que apunta directamente al objetivo principal de este estudio.
+
+\bigbreak
+
+Muestreos buenos ocasionalmente producirán malos resultados y sistemas malos ocasionalmente producirán buenos resultados \cite{gulland-1966}. Por esto, es importante repetir los experimentos para comprender la distribución de frecuencia del sistema el cual deberá dar una varianza pequeña.
+
+\bigbreak
+
 Entre los tipos de muestreo que se han encontrado útiles para medir los suelos agrícolas se tienen:
 
 \begin{itemize}
@@ -171,7 +183,7 @@ Entre los tipos de muestreo que se han encontrado útiles para medir los suelos 
     
     \item \textbf{Muestreo Simple Estratificado:} Esta es una técnica de muestreo que será muy útil en el modelado de los suelos agrícolas. La población se particiona en subconjuntos de diferentes tipos y homogéneos de forma que se puede realizar un MAS en cada subconjunto homogéneo de la partición. Por ejemplo, los lotes se pueden particionar como: área forestal, con problemas, bosque, construcción, etc.
     
-    \item \textbf{Muestreo sistemático:} En este muestreo se toma un punto aleatorio y se mide por cada $n$-ésima unidad de forma que se lleva un espaciado constante a partir del punto inicial. Por ejemplo, este tipo de muestreo es utilizado para medir el suelo cuando es rectangular a lo largo de su perímetro o también cuando es de forma irregular.
+    \item \textbf{Muestreo Sistemático:} En este muestreo se toma un punto aleatorio y se mide por cada $n$-ésima unidad de forma que se lleva un espaciado constante a partir del punto inicial. Por ejemplo, este tipo de muestreo es utilizado para medir el suelo cuando es rectangular a lo largo de su perímetro o también cuando es de forma irregular.
 \end{itemize}
 
 \subsection{Marco para muestreo}
