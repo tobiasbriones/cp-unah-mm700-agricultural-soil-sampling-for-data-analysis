@@ -501,6 +501,89 @@ $$
 
 si $n$ no es pequeño comparado con $N$ donde $S^2$ es la varianza de la población total.
 
+\subsection{Ejemplo}
+
+En esta subsección se presenta un ejemplo con datos reales obtenido del \textit{Manual of Sampling and Statistical Methods for Fisheries Biology} \cite{gulland-1966}:
+
+\bigbreak
+
+\subsubsection{Barco de pesca comercial}
+
+La captura de un arrastrero comercial que desembarca eglefino en Aberdeen \footnote{Aberdeen es una ciudad en Escocia \cite{wikipedia-contributors-2021}.} se clasificó en cuatro categorías de tamaño que forman los cuatro estratos. Se midieron muestras de eglefino \footnote{El eglefino es un miembro de la familia del bacalao con un sabor suave, carne firme y textura húmeda. Se usa indistintamente con el bacalao pero tiene un sabor ligeramente más dulce, lo que lo convierte en el mejor pescado blanco para ahumar. El eglefino se vende comúnmente fresco, congelado o ahumado \cite{sustainable-fishing-msc-marine-stewardship-council-2021}.} de cada categoría y los datos resultantes se pueden resumir de la siguiente manera:
+
+\bigbreak
+
+% ----- TABLE
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\rowcolor[HTML]{CBCEFB} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{CBCEFB}\textbf{Categoría}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$N_h$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$n_h$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$Sx_{hj}$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$Sx_{hj}^2$}} \\ \hline
+Pequeña                                                          & 2432                                                        & 152                                                         & 5284                                                            & 185532                                                            \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+Pequeña-media                                                    & 1656                                                        & 92                                                          & 3817                                                            & 158953                                                            \\ \hline
+Media                                                            & 2268                                                        & 63                                                          & 3033                                                            & 146357                                                            \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+Grande                                                           & 665                                                         & 35                                                          & 2027                                                            & 118169                                                            \\ \hline
+\rowcolor[HTML]{FFCE93} 
+Total                                                            & 7021                                                        & 342                                                         & 14161                                                           & 609011                                                            \\ \hline
+\end{tabular}
+\caption{Datos para cada estrato de la captura del barco de pesca}
+\end{table}
+
+% ----- END TABLE
+
+donde $x$ es la longitud del pescado en $cm$.
+
+Entonces usando como estimado de $S_h^2$ la ecuación:
+
+$$
+S_h^2 = \frac{1}{n_h - 1} \left[ \sum_{h=1}^{N_h} x_{hj}^2 - \frac{1}{n_h} \left(\sum_{h=1}^{N_h}x_{xj} \right)^2 \right]
+$$
+
+también tenemos que:
+
+% ----- TABLE
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\rowcolor[HTML]{CBCEFB} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{CBCEFB}\textbf{Categoría}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$x_h$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$N_hx_h$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$S_{h}^2$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$\frac{S_{h}^2}{n_h}$}} & \textbf{$\frac{N_h^2S_h^2}{n_h}$} \\ \hline
+Pequeña                                                          & 34.763                                                      & 84,544                                                         & 12.21                                                           & 0.0803                                                                      & 474,900                           \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+Pequeña-media                                                    & 41.489                                                      & 68,706                                                         & 6.47                                                            & 0.0703                                                                      & 192,800                           \\ \hline
+Media                                                            & 48.143                                                      & 109,188                                                        & 5.48                                                            & 0.0870                                                                      & 447,500                           \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+Grande                                                           & 57.914                                                      & 38,513                                                         & 22.85                                                           & 0.6529                                                                      & 288,700                           \\ \hline
+\rowcolor[HTML]{FFCE93} 
+Total                                                            &                                                             & 300,951                                                        &                                                                 &                                                                             & 1,403,900                         \\ \hline
+\end{tabular}
+\end{table}
+
+% ----- END TABLE
+
+Así:
+
+\bigbreak
+
+$\overline{x} = \frac{300,951}{7,021} = 42.9$
+
+\bigbreak
+
+$var(\overline{x}) = \frac{300,951}{(7,021)^2} = 0.0285$
+
+\bigbreak
+
+$s.d(\overline{x}) = 0.17$
+
+\bigbreak
+
+El $95\%$ de confianza para la longitud media real del pescado establece dicho intervalo en $42.9 \pm (2 \cdot 0.17)$ esto es, $42.6-43.2 \, cm$.
+
 \section{Encuestas agrícolas}
 
 A fin de obtener información precisa para poder diseñar un muestreo representativo y eficiente puede ser necesario hacer un análisis mediante encuestas y poder obtener uno de los modelos de muestreo que se conocen.
