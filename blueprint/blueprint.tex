@@ -442,6 +442,65 @@ $\overline{x}_h = \frac{1}{n_h} \sum_{j \in S_h} x_{hj}$
 
 $s^2_h = \sum_{j \in S_h} \frac{(x_{hj} - \overline{x}_h)^2}{n_h - 1}$
 
+\bigbreak
+
+El muestreo estratificado sin reemplazo basado en el MAS es el objetivo principal para obtener resultados bajo este marco teórico.
+
+\subsection{Varianza}
+
+Asumiendo que se tiene un muestreo estratificado donde cada estrato es relativamente homogéneo, la varianza de cada estrato es pequeña por lo que la varianza del estimado final también será pequeña, por consiguiente se sigue que \cite{gulland-1966}:
+
+\bigbreak
+
+Tenemos siempre que $N$ es el total de la población, $N_h$ es el $h$-ésimo estrato y $N=SN_h$. Una muestra de $n_h$ es tomada entonces del $h$-ésimo estrato, los valores que se desean estimar (longitud, peso, etc.) son dados por $x_{hj}$, $j=1,...,n_h$. De arriba, tenemos que la media estimada para el estrato $h$ es
+
+$$
+\overline{x}_h = \frac{1}{n_h} \sum_{h=1}^{n_h} x_{hj}
+$$
+
+Un estimado sin sesgo de la media en toda la población es dado por esta media ponderada:
+
+$$
+\overline{x} = \frac{1}{N} \sum_{h} N_h \overline{x}_h
+$$
+
+Si la varianza dentro del $h$-ésimo estrato es $S_h^2$
+
+$$
+var(\overline{x}_h) = \frac{1}{n_h} S_h^2
+$$
+
+y
+
+$$
+var(\overline{x}) = \frac{1}{N^2} \sum \frac{N_h^2}{n_h}S_h^2
+$$
+
+dado que $n_h$ sea pequeño comparado a $N_h$. Sino, las varianzas son dadas por
+
+$$
+var(\overline{x}_h = \frac{1}{n_h}(1 - \frac{n_h}{N_h})S_h^2
+$$
+
+
+$$
+var(\overline{x}) = \frac{1}{N^2} \sum_h N_h^2 \frac{1}{n_h}(1 - \frac{n_h}{N_h})s_h^2 = \frac{1}{N^2} \sum_h N_h (N_h - n_h) \frac{1}{n_h} S_h^2
+$$
+
+Esta varianza puede ser comparada con la varianza del estimado obtenido al hacer el muestreo aleatorio de la población total:
+
+$$
+var(\overline{x}') = \frac{1}{n}S^2
+$$
+
+o
+
+$$
+var(\overline{x}) = \frac{1}{n}(1 - \frac{n}{N})S^2
+$$
+
+si $n$ no es pequeño comparado con $N$ donde $S^2$ es la varianza de la población total.
+
 \section{Encuestas agrícolas}
 
 A fin de obtener información precisa para poder diseñar un muestreo representativo y eficiente puede ser necesario hacer un análisis mediante encuestas y poder obtener uno de los modelos de muestreo que se conocen.
