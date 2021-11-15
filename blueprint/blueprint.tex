@@ -379,6 +379,11 @@ Para hacer un \textbf{muestreo estratificado aleatorio} como es de esperar, se t
 
 \bigbreak
 
+Según la \textit{Guía de muestreo de suelo $\|$ Gob.Pe} \cite{gobpe-ministerio-del-ambiente-2014}, el muestreo aleatorio estratificado se hace \say{cuando se dispone de información previa y el sitio presenta 
+características geográficas diferenciadas, es necesario estratificar o subdividir en subgrupos las 
+muestras que tienen homogeneidad en el terreno y en cada estrato se aplica un muestreo 
+aleatorio simple de manera independiente}.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\paperwidth]{ref/stratified-sampling-examples.png}
@@ -626,6 +631,22 @@ Otras bibliotecas de interés comprenden \textbf{seaborn} derivado de matplotlib
 \subsection{Estadística}
 
 Las bibliotecas de SciPy, pandas y StatsModels tienen una gran gama de funciones para aplicaciones de estadística. Por el resto, Python trae muchas construcciones para el manejo de funciones, vectores, operaciones y matrices aunque las matrices no son lo más fuerte de Python.
+
+\subsection{GIS en la agricultura}
+
+Con respecto a la visualización de los datos, se tiene en consideración que el sector agrícola cuenta o debería contar con el uso de GISs. Un \textbf{GIS (Geographic Information System)} es una herramienta que crea representaciones visuales de los datos y realiza análisis espaciales a fin de tomar decisiones informadas; combina hardware, software y datos \cite{hammonds-2019}.
+
+\bigbreak
+
+En agricultura, un GIS puede dar información sobre el suelo, en tanto a cómo está estructurado, las propiedades y condiciones que presenta. Esto también es muy útil para visualizar un muestreo de puntos en un mapa en $2D$. Los archivos con los que se suele trabajar estos gráficos son archivos shapefile.
+
+\bigbreak
+
+\textbf{Shapefile:} \say{Formato de datos utilizado por la mayoría de software GIS/FMIS para almacenar datos espaciales (por ejemplo, límites de campo, ubicaciones de puntos o los polígonos que representan celdas de la cuadrícula). Un shapefile se almacena como una colección de archivos con un nombre común pero con diferentes extensiones de archivo (por ejemplo, .shp, .shx y .dbf).} Fuente: NC State Extension \cite{nc-state-extension-2021}.
+
+\bigbreak
+
+La biblioteca GeoPandas es una buena opción para manipular archivos shapefile y otros gráficos vectoriales.
 
 \section{Encuestas agrícolas}
 
