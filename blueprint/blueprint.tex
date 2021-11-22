@@ -23,9 +23,10 @@
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
 \title{Anteproyecto de Investigación: Modelo de muestreo virtual de suelos agrícolas en Honduras para analítica en base al muestreo aleatorio simple y estratificado}
-\author{Tobias Briones}
+\author{Tobias Briones \bigbreak tobias.briones@unah.hn}
 \date{Septiembre 2021}
 
+% ----- THIS DOCUMENT CONTAINS ALL THE BLUEPRINT PIECES TOGETHER -----
 
 \begin{document}
 
@@ -54,6 +55,8 @@
 \tableofcontents
 \listoffigures
 \newpage
+
+% ------------------------------  PROBLEM STATEMENT  ------------------------------ %
 
 \chapter{Introducción}
 
@@ -175,6 +178,13 @@ La metodología para llevar a cabo este proyecto es de carácter mixta, es decir
 
 Con respecto al enfoque cuantitativo se tiene que este estudio es de carácter deductivo al aplicar métodos estadísticos y de teoría de muestreo además de reducir el uso de la computación a dominio específico para dicho problema de investigación. Por otra parte, se deberá de generalizar el modelo a plantear a partir de la información agrícola del área local y sus necesidades. En tanto a encuestas, esto conduce a utilizar una parte del método cualitativo para, por ejemplo, obtener el tipo de cosechas que se producen en la región y que serán capturadas por el muestreo correspondiente. La parte cualitativa ha de permitir poder establecer la homogeneidad entre los estratos para el muestreo estratificado.
 
+
+% ------------------------------  END OF PROBLEM STATEMENT  ------------------------------ %
+
+
+% ------------------------------  FRAMEWORK ------------------------------ %
+
+
 \chapter{Marco teórico}
 
 El muestreo surge de la necesidad de reducir la cantidad de candidatos que van a ser sometidos a un análisis estadístico siempre que estos representen al total de la población en la que pertenecen, es decir, que se obtengan resultados muy similares al hacer el estudio bajo esa muestra como si si hicieran con toda la población. El problema claramente es que las poblaciones (total de individuos de interés para dicho estudio) son a menudo demasiado grandes. Un buen muestreo permite no tener que estudiar a todos los elementos de una población. 
@@ -211,13 +221,19 @@ El marco para muestreo \cite{lohr-2009} consiste en definir el espacio de la pob
     Donde $N \in \mathbb{N}$ es el tamaño de la población.
 \end{definition}
 
+\bigbreak
+
 \begin{definition}[Muestra]
     Sea $U$ el conjunto universo. Un conjunto $S$ es una muestra para $U$ si $S \subseteq U$.
 \end{definition}
 
+\bigbreak
+
 \begin{definition}[Probabilidad de una muestra]
     Si $S$ es una muestra. $S$ tiene una probabilidad de ser escogida de $P(S)$.
 \end{definition}
+
+\bigbreak
 
 Notar que la probabilidad de todas las muestras de ser escogida es $1$. Esto es, $\forall S_i \in D \implies \sum_{i=1}^{N} P(S_i) = 1$, donde el conjunto $D$ es el diseño escogido, esto es, una colección de subconjuntos (muestras) de $U$.
 
@@ -233,25 +249,37 @@ Según las definiciones de arriba, cada muestra $S_i$ tiene probabilidad $P(S_i)
     $$
 \end{definition}
 
+\bigbreak
+
 Es decir, para calcular la probabilidad de que la unidad $x$ sea seleccionada, se hace la suma de las probabilidades de todas las muestras que contienen a $x$.
+
+\bigbreak
 
 Con respecto a los intervalos de confianza, se deberá repetir muchas veces el muestreo para por determinar su confianza. Son útiles en el caso no-ideal donde no se conoce toda la población. Los intervalos de confianza se construyen como \cite{the-pennsylvania-state-university-no-date}:
 
 \begin{definition}[Intervalo de confianza]
-    Un \textbf{intervalo de confianza} es un rango que se calcula usando estadística para estimar un parámetro desconocido de la población con un nivel determinado de confianza. 
+    Un \textbf{intervalo de confianza} es un rango que se calcula usando estadística para estimar un parámetro desconocido de la población con un nivel determinado de confianza.
 \end{definition}
+
+\bigbreak
 
 \begin{definition}[Sesgo de una muestra]
     El \textbf{sesgo de una muestra} es la diferencia de la media estimada y el valor real.
 \end{definition}
 
+\bigbreak
+
 \begin{definition}[Estimación puntual]
     La \textbf{estimación puntual} es una muestra estadística que sirve como los mejores estimados para un parámetro de la población.
 \end{definition}
 
+\bigbreak
+
 \begin{definition}[Margen de error]
     El \textbf{margen de error} de un intervalo de confianza es la mitad de su ancho.
 \end{definition}
+
+\bigbreak
 
 \begin{definition}[Diseño muestral]
     Un \textbf{diseño muestral} es una función $p(X)$ que asigna una probabilidad de selección a cada posible muestra en el espacio muestral $\omega$.
@@ -264,6 +292,8 @@ Con respecto a los intervalos de confianza, se deberá repetir muchas veces el m
     
     En una \textbf{muestra aleatoria sin reemplazo} la selección de los elementos que han sido seleccionados no vuelven a ser parte de la población. En una \textbf{muestra aleatoria con reemplazo} la selección de de los elementos que han sido seleccionados vuelven a ser parte de la población, es decir, un elemento puede ser seleccionado más de una vez.
 \end{definition}
+
+\bigbreak
 
 \section{Estimar el tamaño de la muestra}
 
@@ -290,7 +320,8 @@ Es importante que el suelo sea homogéneo para realizar un muestreo simple aleat
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.3\paperwidth]{ref/sampling-patterns-srs.png}
-    \caption{Patrones de muestreo para análisis de fertilidad de suelo \cite{lassaga-2011}}
+    \caption{Patrones de muestreo para análisis de fertilidad de suelo}
+    Fuente: Muestreo Y análisis de suelos para diagnóstico de fertilidad \cite{lassaga-2011}
 \end{figure}
 
 Como se detalla más adelante, el terreno o lotes también se puede estratificar y realizar un MAS en cada estrato obtenido. El muestro sistemático por otra parte puede llegar a reducirse a un MAS o similar dado las condiciones apropiadas. Esto indica que el MAS es elemental para hacer otro tipo de diseño de muestreo.
@@ -379,7 +410,7 @@ Para hacer un \textbf{muestreo estratificado aleatorio} como es de esperar, se t
 
 \bigbreak
 
-Según la \textit{Guía de muestreo de suelo $\|$ Gob.Pe} \cite{gobpe-ministerio-del-ambiente-2014}, el muestreo aleatorio estratificado se hace \say{cuando se dispone de información previa y el sitio presenta 
+Según la \textit{Guía de muestreo de suelo $\mid$ Gob.Pe} \cite{gobpe-ministerio-del-ambiente-2014}, el muestreo aleatorio estratificado se hace \say{cuando se dispone de información previa y el sitio presenta 
 características geográficas diferenciadas, es necesario estratificar o subdividir en subgrupos las 
 muestras que tienen homogeneidad en el terreno y en cada estrato se aplica un muestreo 
 aleatorio simple de manera independiente}.
@@ -387,7 +418,8 @@ aleatorio simple de manera independiente}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\paperwidth]{ref/stratified-sampling-examples.png}
-    \caption{Ejemplo de estratos para diagnóstico de fertilidad \cite{lassaga-2011}}
+    \caption{Ejemplo de estratos para diagnóstico de fertilidad}
+    Fuente: Muestreo y Análisis de Suelos para Diagnóstico de Fertilidad \cite{lassaga-2011}
 \end{figure}
 
 Como resumen de los tipos de muestreos de utilidad se puede ilustrar el siguiente ejemplo:
@@ -395,7 +427,8 @@ Como resumen de los tipos de muestreos de utilidad se puede ilustrar el siguient
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\paperwidth]{ref/kind-of-samplings-example.png}
-    \caption{Ejemplo de tipos de muestreos. a) aleatorio simple, b) aleatorio estratificado, c) sistemático rejilla rectangular, d) sistemático rejilla polar \cite{innec-2007}}
+    \caption{Ejemplo de tipos de muestreos. a) aleatorio simple, b) aleatorio estratificado, c) sistemático rejilla rectangular, d) sistemático rejilla polar}
+    Fuente: Gobierno de México $\mid$ INNEC Instituto Nacional de Ecología y Cambio Climático \cite{innec-2007}
 \end{figure}
 
 Sea $S_h$ el conjunto de $n_h$ unidades para el estrato $h$. El valor de la unidad \textit{jth} en el estrato $h$ se define como $x_{hj}$. Se siguen las siguientes valoraciones para el muestreo estratificado \cite{lohr-2009}:
@@ -591,7 +624,7 @@ El $95\%$ de confianza para la longitud media real del pescado establece dicho i
 
 \section{Patrones de muestreo}
 
-Un patrón de muestreo se puede aplicar por ejemplo, a cada estrato de un muestreo estratificado. En el caso más trivial se puede hacer referencia a un patrón aleatorio, en otros casos se puede utilizar uno más elaborado. Esta sección recopila los patrones de muestreos de acuerdo a la \textit{Guía de muestreo de suelo $\|$ Gob.Pe} \cite{gobpe-ministerio-del-ambiente-2014}.
+Un patrón de muestreo se puede aplicar por ejemplo, a cada estrato de un muestreo estratificado. En el caso más trivial se puede hacer referencia a un patrón aleatorio, en otros casos se puede utilizar uno más elaborado. Esta sección recopila los patrones de muestreos de acuerdo a la \textit{Guía de muestreo de suelo $\mid$ Gob.Pe} \cite{gobpe-ministerio-del-ambiente-2014}.
 
 \bigbreak
 
@@ -611,14 +644,14 @@ Estos patrones de muestreo son utilizados en estadística.
 
 \bigbreak
 
-\textbf{Aleatorio desalineado sobre rejilla regular:} Es una variante del patrón estratificado. En algunas celdas, la coordenada "x" se mueve al azar y en el resto de las celdas se mueve la coordenada "y", o viceversa. La desventaja también se hereda del método estratificado.
+\textbf{Aleatorio desalineado sobre rejilla regular:} Es una variante del patrón estratificado. En algunas celdas, la coordenada \say{x} se mueve al azar y en el resto de las celdas se mueve la coordenada \say{y}, o viceversa. La desventaja también se hereda del método estratificado.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\paperwidth]{ref/random-sampling-patterns.png}
     \caption{Patrones de muestreo con distribución aleatoria}
     a) Aleatorio, b) Aleatorio sobre rejilla regular, c) Aleatorio desalineado sobre rejilla regular \\
-    Fuente: \textit{Guía de muestreo de suelo $\|$ Gob.Pe} \cite{gobpe-ministerio-del-ambiente-2014}
+    Fuente: \textit{Guía de muestreo de suelo $\mid$ Gob.Pe} \cite{gobpe-ministerio-del-ambiente-2014}
 \end{figure}
 
 \subsection{Con distribución uniforme}
@@ -646,7 +679,7 @@ Estos patrones de muestreo son utilizados en estadística.
     \includegraphics[width=0.7\paperwidth]{ref/uniform-sampling-patterns.png}
     \caption{Patrones de muestreo con distribución uniforme}
     a) Rejillas regulares, b) Rejillas triangulares, c) Rejilla circular, d) Sobre una línea, e) Diagonales múltiples \\
-    Fuente: \textit{Guía de muestreo de suelo $\|$ Gob.Pe} \cite{gobpe-ministerio-del-ambiente-2014}
+    Fuente: \textit{Guía de muestreo de suelo $\mid$ Gob.Pe} \cite{gobpe-ministerio-del-ambiente-2014}
 \end{figure}
 
 
@@ -810,17 +843,20 @@ Fundamental                                                                & \be
 Preparación                                                                & \begin{tabular}[c]{@{}l@{}}Se debe a pérdidas, contaminación \\ y/o alteración de una muestra\end{tabular}                                  & \begin{tabular}[c]{@{}l@{}}Existen técnicas de campo y laboratorio\\ para evitar el problema\end{tabular}                                 \\ \hline
 \end{tabular}
 \caption{Tipos de errores de muestreo y técnicas para su minimización}
-Fuente: Gobierno de México $\|$ Instituto Nacional de Ecología y Cambio Climático \cite{innec-2007}
+Fuente: Gobierno de México $\mid$ Instituto Nacional de Ecología y Cambio Climático \cite{innec-2007}
 \end{table}
 % ----- END TABLE
 
 Muchas de estas soluciones para este tipo común de errores deben de ayudar a mejorar las técnicas de muestreo. Definitivamente es recomendable que el usuario que realiza la muestra física sea asesorado con estas guías las cuales se extienden mucho más allá de este estudio y son fundamentales para salvar enormes cantidades económicas y tener una ciencia de datos más correcta.
 
-\section{Anexos}
+
+% ------------------------------ END OF  FRAMEWORK ------------------------------ %
+
+\chapter{Anexos}
 
 Se ha tomado nota en pequeña parte sobre la elaboración y estructura de \textit{Manual de Elaboración y Presentación de Tesis} \cite{universidad-san-carlos-2016}, \textit{Metodología de la investigación} \cite{collado-2014}, \textit{Introducción a la metodología de la investigación científica} \cite{cabezas-2018} para esta propuesta de investigación.
 
-\subsection{Glosario}
+\section{Glosario}
 
 \begin{itemize}
     \item \textbf{Analítica:} Proceso de detectar, interpretar y comunicar patrones significativos en los datos, así como usar herramientas para que toda la organización pueda realizar cualquier pregunta sobre cualquier información en todos los entornos y dispositivos posibles \cite{oracle-2021}.
