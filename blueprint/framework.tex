@@ -104,7 +104,7 @@ El marco para muestreo \cite{lohr-2009} consiste en definir el espacio de la pob
 
 \bigbreak
 
-Notar que la probabilidad de todas las muestras de ser escogida es $1$. Esto es, $\forall S_i \in D \implies \sum_{i=1}^{N} P(S_i) = 1$, donde el conjunto $D$ es el diseño escogido, esto es, una colección de subconjuntos (muestras) de $U$.
+Notar que la probabilidad de todas las muestras de ser escogida es $1$. Esto es, $\forall S_i \in D \implies \sum \limits_{i=1}^{N} P(S_i) = 1$, donde el conjunto $D$ es el diseño escogido, esto es, una colección de subconjuntos (muestras) de $U$.
 
 \bigbreak
 
@@ -114,7 +114,7 @@ Según las definiciones de arriba, cada muestra $S_i$ tiene probabilidad $P(S_i)
     La probabilidad de que una unidad $x$ sea seleccionada en una colección de muestras $D = \{ S_1, S_2, ..., S_n \}$ se define como
     
     $$
-    \pi_x = P(\text{unidad $x$ está en la muestra}) = \sum_{S_i \in \{ S \in D | x \in S \}} P(S_i)
+    \pi_x = P(\text{unidad $x$ está en la muestra}) = \sum \limits_{S_i \in \{ S \in D | x \in S \}} P(S_i)
     $$
 \end{definition}
 
@@ -204,7 +204,7 @@ Estos son los resultados para los cálculos del MAS \cite{thompson-2012}:
 
 \bigbreak
 
-$\overline{x}_U = \frac{1}{N}(x_1 + x_2 + ... + x_N) = \frac{1}{N} \sum_{i=1}^N x_i$
+$\overline{x}_U = \frac{1}{N}(x_1 + x_2 + ... + x_N) = \frac{1}{N} \sum \limits_{i=1}^N x_i$
 
 
 \bigbreak
@@ -212,15 +212,19 @@ $\overline{x}_U = \frac{1}{N}(x_1 + x_2 + ... + x_N) = \frac{1}{N} \sum_{i=1}^N 
 
 \bigbreak
 
-$\overline{x} = \frac{1}{n}(x_1 + x_2 + ... + x_N) = \frac{1}{n} \sum_{i=1}^n x_i$
-
-
-\bigbreak
-\textbf{Varianza de la población finita} En MAS, la varianza de la muestra $s^2$ es una estimación no-alineada de la varianza para la población finita
+$\overline{x} = \frac{1}{n}(x_1 + x_2 + ... + x_N) = \frac{1}{n} \sum \limits_{i=1}^n x_i$
 
 \bigbreak
 
-$\sigma ^2 = \frac{1}{N-1} \sum_{i=1}^{N} (x_i - \overline{x}_U)^2$
+\textbf{Varianza de la población finita}
+
+\bigbreak
+
+En MAS, la varianza de la muestra $s^2$ es una estimación no-alineada de la varianza para la población finita
+
+\bigbreak
+
+$\sigma^2 = \frac{1}{N-1} \sum \limits_{i=1}^{N} (x_i - \overline{x}_U)^2$
 
 
 \bigbreak
@@ -228,7 +232,7 @@ $\sigma ^2 = \frac{1}{N-1} \sum_{i=1}^{N} (x_i - \overline{x}_U)^2$
 
 \bigbreak
 
-$s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \overline{x}_U)^2$
+$s^2 = \frac{1}{n-1} \sum \limits_{i=1}^n (x_i - \overline{x}_U)^2$
 
 
 \bigbreak
@@ -236,7 +240,7 @@ $s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \overline{x}_U)^2$
 
 \bigbreak
 
-$t = \sum_{i=1}^N x_i = N \overline{x}_U$
+$t = \sum \limits_{i=1}^N x_i = N \overline{x}_U$
 
 
 \section{Muestreo sistemático}
@@ -275,7 +279,7 @@ La población se debe de dividir (particionar) en \textbf{estratos} que sean dis
 
 \bigbreak
 
-Para hacer un \textbf{muestreo estratificado aleatorio} como es de esperar, se toma cada estrato de $N_h$ unidades y se hacen $n_h$ mediciones aleatorias ($n_h < N_h$). Entonces el tamaño de la población se encuentra dado por $n = \sum_{i=1}^H n_i$.
+Para hacer un \textbf{muestreo estratificado aleatorio} como es de esperar, se toma cada estrato de $N_h$ unidades y se hacen $n_h$ mediciones aleatorias ($n_h < N_h$). Entonces el tamaño de la población se encuentra dado por $n = \sum \limits_{i=1}^H n_i$.
 
 \bigbreak
 
@@ -306,35 +310,35 @@ Sea $S_h$ el conjunto de $n_h$ unidades para el estrato $h$. El valor de la unid
 
 \textbf{Población total en el estrato H}
 \bigbreak
-$t_h = \sum_{j=1}^{N_h} x_{hj}$
+$t_h = \sum \limits_{j=1}^{N_h} x_{hj}$
 
 
 \bigbreak
 
 \textbf{Total de la población}
 \bigbreak
-$t = \sum_{h=1}^H t_h$
+$t = \sum \limits_{h=1}^H t_h$
 
 
 \bigbreak
 
 \textbf{Media de la población para el estrato $h$}
 \bigbreak
-$\overline{x}_{hU} = \frac{\sum_{j=1}^{N_h} x_{hj}}{N_h} = \frac{t_h}{N_h}$
+$\overline{x}_{hU} = \frac{\sum \limits_{j=1}^{N_h} x_{hj}}{N_h} = \frac{t_h}{N_h}$
 
 
 \bigbreak
 
 \textbf{Media de la población en general}
 \bigbreak
-$\overline{x}_U = \frac{\sum_{h=1}^H \sum_{j=1}^{N_h} x_{hj}}{N} = \frac{t}{N}$
+$\overline{x}_U = \frac{\sum \limits_{h=1}^H \sum \limits_{j=1}^{N_h} x_{hj}}{N} = \frac{t}{N}$
 
 
 \bigbreak
 
 \textbf{Varianza de la población en el estrato $h$}
 \bigbreak
-$S_h^2 = \sum_{j=1}^{N_h} \frac{(x_{hj} - \overline{x}_{hU})^2}{N_h - 1}$
+$S_h^2 = \sum \limits_{j=1}^{N_h} \frac{(x_{hj} - \overline{x}_{hU})^2}{N_h - 1}$
 
 
 \bigbreak
@@ -343,11 +347,11 @@ A partir de aquí, otros cálculos para los MAS se pueden aplicar para cada estr
 
 \bigbreak
 
-$\overline{x}_h = \frac{1}{n_h} \sum_{j \in S_h} x_{hj}$
+$\overline{x}_h = \frac{1}{n_h} \sum \limits_{j \in S_h} x_{hj}$
 
 \bigbreak
 
-$s^2_h = \sum_{j \in S_h} \frac{(x_{hj} - \overline{x}_h)^2}{n_h - 1}$
+$s^2_h = \sum \limits_{j \in S_h} \frac{(x_{hj} - \overline{x}_h)^2}{n_h - 1}$
 
 \bigbreak
 
@@ -362,13 +366,13 @@ Asumiendo que se tiene un muestreo estratificado donde cada estrato es relativam
 Tenemos siempre que $N$ es el total de la población, $N_h$ es el $h$-ésimo estrato y $N=SN_h$. Una muestra de $n_h$ es tomada entonces del $h$-ésimo estrato, los valores que se desean estimar (longitud, peso, etc.) son dados por $x_{hj}$, $j=1,...,n_h$. De arriba, tenemos que la media estimada para el estrato $h$ es
 
 $$
-\overline{x}_h = \frac{1}{n_h} \sum_{h=1}^{n_h} x_{hj}
+\overline{x}_h = \frac{1}{n_h} \sum \limits_{h=1}^{n_h} x_{hj}
 $$
 
 Un estimado sin sesgo de la media en toda la población es dado por esta media ponderada:
 
 $$
-\overline{x} = \frac{1}{N} \sum_{h} N_h \overline{x}_h
+\overline{x} = \frac{1}{N} \sum \limits_{h} N_h \overline{x}_h
 $$
 
 Si la varianza dentro del $h$-ésimo estrato es $S_h^2$
@@ -391,7 +395,7 @@ $$
 
 
 $$
-var(\overline{x}) = \frac{1}{N^2} \sum_h N_h^2 \frac{1}{n_h}(1 - \frac{n_h}{N_h})s_h^2 = \frac{1}{N^2} \sum_h N_h (N_h - n_h) \frac{1}{n_h} S_h^2
+var(\overline{x}) = \frac{1}{N^2} \sum \limits_h N_h^2 \frac{1}{n_h}(1 - \frac{n_h}{N_h})s_h^2 = \frac{1}{N^2} \sum \limits_h N_h (N_h - n_h) \frac{1}{n_h} S_h^2
 $$
 
 Esta varianza puede ser comparada con la varianza del estimado obtenido al hacer el muestreo aleatorio de la población total:
@@ -447,7 +451,7 @@ donde $x$ es la longitud del pescado en $cm$.
 Entonces usando como estimado de $S_h^2$ la ecuación:
 
 $$
-S_h^2 = \frac{1}{n_h - 1} \left[ \sum_{h=1}^{N_h} x_{hj}^2 - \frac{1}{n_h} \left(\sum_{h=1}^{N_h}x_{xj} \right)^2 \right]
+S_h^2 = \frac{1}{n_h - 1} \left[ \sum \limits_{h=1}^{N_h} x_{hj}^2 - \frac{1}{n_h} \left(\sum \limits_{h=1}^{N_h}x_{xj} \right)^2 \right]
 $$
 
 también tenemos que:
