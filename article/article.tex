@@ -1,0 +1,95 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[letterpaper, portrait, margin=2cm]{geometry}
+\usepackage[style=ieee]{biblatex}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{array}
+\usepackage{dirtytalk}
+\usepackage[table,xcdraw]{xcolor}
+
+\addbibresource{bibliography.bib}
+
+\newtheorem{definition}{Definición}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\title{
+MODELO DE MUESTREO VIRTUAL DE SUELOS AGRÍCOLAS EN HONDURAS PARA ANALÍTICA EN BASE AL MUESTREO ALEATORIO SIMPLE Y ESTRATIFICADO
+}
+
+\author{
+\IEEEauthorblockN{Tobias Briones}
+\IEEEauthorblockA{\textit{Universidad Nacional Autónoma de Honduras} \\
+\textit{Carrera de Licenciatura en Matemática}\\
+San Pedro Sula, Honduras \\
+tobias.briones@unah.hn} \\\vspace*{20pt} \normalsize  
+Diciembre 2021
+}
+\date{Septiembre 2021}
+
+% ----- THIS DOCUMENT CONTAINS ALL THE BLUEPRINT PIECES TOGETHER -----
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    \includegraphics[width=0.3\linewidth]{ref/logo-unah.png}\\[4ex]
+    \textit{Universidad Nacional Autónoma de Honduras}
+    
+    \bigbreak
+    
+    \textit{Proyecto de Seminario de Investigación Presentado a la Carrera de Licenciatura en Matemática}
+\end{center}
+
+\thispagestyle{empty}
+\pagestyle{empty}
+\tableofcontents
+\listoffigures
+
+% ------------------------------  FRAMEWORK  ------------------------------ %
+
+
+
+% ------------------------------ END OF  FRAMEWORK ------------------------------ %
+
+\section{Anexos}
+
+Se ha tomado nota en pequeña parte sobre la elaboración y estructura de \textit{Manual de Elaboración y Presentación de Tesis} \cite{universidad-san-carlos-2016}, \textit{Metodología de la investigación} \cite{collado-2014}, \textit{Introducción a la metodología de la investigación científica} \cite{cabezas-2018} para esta propuesta de investigación.
+
+\subsection{Glosario}
+
+\begin{itemize}
+    \item \textbf{Analítica:} Proceso de detectar, interpretar y comunicar patrones significativos en los datos, así como usar herramientas para que toda la organización pueda realizar cualquier pregunta sobre cualquier información en todos los entornos y dispositivos posibles \cite{oracle-2021}.
+
+    \item \textbf{Rendimiento:} Razón con unidad dimensional [MASA][PRODUCTO]/[ÁREA] útil para medir el beneficio producido en una zafra (p. ej. 1TA/HA 1 tonelada de azucar por hectárea).
+
+    \item \textbf{Zafra:} Cosecha de la caña dulce (p. ej. zafra 2020-2021).
+\end{itemize}
+
+\subsubsection{Términos de Dominio Específico}
+
+\begin{itemize}
+    \item \textbf{Usuario:} Empresa agrícola en Honduras.
+
+    \item \textbf{Usuario interno:} Empleado de la empresa agrícola.
+
+    \item \textbf{Muestreo físico:} Muestra original que el usuario tomó en su suelo agrícola.
+
+    \item \textbf{Muestreo virtual:} Resultado o salida del modelo que se ha de desarrollar en este estudio el cual tiene como entrada el muestreo físico.
+
+    \item \textbf{Curar:} Transformar los datos originales mediante filtros de forma que se eliminen los todos aquellos datos innecesarios o corruptos para el análisis subyacente.
+\end{itemize}
+
+\printbibliography
+
+\end{document}
