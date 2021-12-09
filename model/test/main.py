@@ -16,7 +16,7 @@ geográficos y los datos del muestreo físico.
 Author: Tobias Briones
 """
 
-import hn_example as hn
+from . import hn_example as hn
 
 DEF_STRATUM_COL = 'Estrato'
 
