@@ -61,14 +61,17 @@ class ColumnConfig:
     def __init__(
         self,
         stratum='stratum',
-        harvested_area='harvested_area'
+        harvested_area='harvested_area',
+        gis_area='area'
     ):
         self.stratum = stratum
         self.harvested_area = harvested_area
+        self.gis_area = gis_area
 
 
 def cols():
     return ColumnConfig(
         stratum=hn.STRATUM_COL,
-        harvested_area=hn.HardSampling.HARVESTED_AREA_COL
+        harvested_area=hn.HardSampling.HARVESTED_AREA_COL,
+        gis_area=hn.Gis.AREA_COL
     )
