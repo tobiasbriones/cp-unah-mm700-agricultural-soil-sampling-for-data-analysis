@@ -47,6 +47,9 @@ class Main:
     def df(self):
         return self.__df
 
+    def cols(self):
+        return cols()
+
     def filter(self):
         valid_stratum = self.__df[DEF_STRATUM_COL] != hn.Stratum.NONE
         self.__df = self.__df[valid_stratum].reset_index(drop=True)
