@@ -40,15 +40,20 @@ class Gis:
     AREA_COL = 'Área Departamento (HA)'
 
     def __init__(self, parent_dir='.'):
-        self.__df = Gis.get_df()
         self.parent_dir = parent_dir
+        self.__df = Gis.get_df()
+        self.__gdf = gpd.GeoDataFrame()
 
     def df(self):
         return self.__df
 
-    def load_gdf(self):
+    def gdf(self):
+        return self.__gdf
+
+    def load(self):
         gdf_data = gpd.read_file(self.parent_dir + Gis.FILE_NAME)
-        return gpd.GeoDataFrame(self.__df, geometry=gdf_data.geometry)
+        self.__gdf = gpd.GeoDataFrame(self.__df, geometry=gdf_data.geometry)
+        return self.__gdf
 
     @staticmethod
     def get_df():
