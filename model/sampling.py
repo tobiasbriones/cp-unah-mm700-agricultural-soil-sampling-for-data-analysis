@@ -47,8 +47,11 @@ class Sampling:
         return self.__stratum_filter
 
     def run(self):
-        self.__stratum_filter.filter()
+        sampling = pd.DataFrame(self.__df, copy=True)
+
+        sampling = self.__stratum_filter.filter_df(sampling)
         return Result(
+            sampling,
             self.__stratum_filter
         )
 
@@ -61,9 +64,14 @@ class Result:
 
     def __init__(
         self,
+        sampling,
         stratum_filter
     ):
+        self.__sampling = sampling
         self.__stratum_filter = stratum_filter
+
+    def show_sampling(self):
+        display(self.__sampling)
 
     def show_stratum_filter(self):
         self.__stratum_filter.plot_stratum_areas()
@@ -83,8 +91,11 @@ class StratumFilter:
     def result(self):
         return self.__result
 
-    def to_list(self):
-        return list(self.__result[self.__cols.stratum])
+    def filter_df(self, df):
+        self.filter()
+        strata = self.to_list()
+        significant_stratum = df[self.__cols.stratum].isin(strata)
+        return df[significant_stratum]
 
     def filter(self):
         areas = self.stratum_areas()
@@ -93,6 +104,9 @@ class StratumFilter:
             ]
         self.__result = curated.reset_index(drop=True)
         return self.__result
+
+    def to_list(self):
+        return list(self.__result[self.__cols.stratum])
 
     def plot_stratum_areas(self):
         fig = px.bar(
