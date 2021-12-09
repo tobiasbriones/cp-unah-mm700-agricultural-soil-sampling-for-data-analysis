@@ -18,7 +18,8 @@ Author: Tobias Briones
 
 import pandas as pd
 import geopandas as gpd
-from model.stratum import Stratum
+import matplotlib.pyplot as plt
+from stratum import Stratum
 
 DEF_STRATUM_COL = 'Estrato'
 
@@ -59,3 +60,13 @@ class Main:
     def __get_df(self):
         gdf = self.__gdf.drop(columns='geometry')
         return pd.DataFrame(gdf, copy=True)
+
+
+def plot(gdf, title, size=10):
+    fig, ax = plt.subplots(1)
+
+    gdf.plot(ax=ax)
+    ax.set_title(title)
+    fig.set_figwidth(size)
+    fig.set_figheight(size)
+    plt.show()
