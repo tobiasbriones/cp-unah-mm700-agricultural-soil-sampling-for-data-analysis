@@ -41,18 +41,19 @@ class Gis:
 
     def __init__(self, parent_dir='.'):
         self.parent_dir = parent_dir
-        self.__df = Gis.get_df()
         self.__gdf = gpd.GeoDataFrame()
 
     def df(self):
-        return self.__df
+        data = self.__gdf.drop(columns='geometry')
+        return pd.DataFrame(data)
 
     def gdf(self):
         return self.__gdf
 
     def load(self):
+        df = Gis.get_df()
         gdf_data = gpd.read_file(self.parent_dir + Gis.FILE_NAME)
-        self.__gdf = gpd.GeoDataFrame(self.__df, geometry=gdf_data.geometry)
+        self.__gdf = gpd.GeoDataFrame(df, geometry=gdf_data.geometry)
         return self.__gdf
 
     @staticmethod
