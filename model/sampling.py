@@ -15,6 +15,7 @@ Contiene la implementación del modelo de muestreo virtual para suelo agrícola.
 Author: Tobias Briones
 """
 
+import random
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -50,6 +51,8 @@ class Sampling:
         sampling = pd.DataFrame(self.__df, copy=True)
 
         sampling = self.__stratum_filter.filter_df(sampling)
+        sampling = self.__stratified_random_sampling(sampling)
+        sampling = sampling.reset_index(drop=True)
         return Result(
             sampling,
             self.__stratum_filter
@@ -57,6 +60,21 @@ class Sampling:
 
     def new_sampling_simulator(self):
         return SamplingSimulator(self.__n, self.__cols, self.__gis)
+
+    def __stratified_random_sampling(self, df):
+        grouped = df.groupby(self.__cols.stratum)
+        sampled_strata = []
+
+        for name, group in grouped:
+            stratum_df = group.reset_index(drop=True)
+            sample = self.__random_sampling(stratum_df)
+            sampled_strata.append(sample)
+        return pd.concat(sampled_strata)
+
+    def __random_sampling(self, stratum_df):
+        h_n = stratum_df[stratum_df.columns[0]].count()
+        units = random.sample(range(0, h_n - 1), self.__n)
+        return stratum_df.filter(items=units, axis=0)
 
 
 class Result:
@@ -69,6 +87,9 @@ class Result:
     ):
         self.__sampling = sampling
         self.__stratum_filter = stratum_filter
+
+    def sampling(self):
+        return self.__sampling
 
     def show_sampling(self):
         display(self.__sampling)
