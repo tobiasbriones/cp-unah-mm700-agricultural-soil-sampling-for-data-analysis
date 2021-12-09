@@ -35,6 +35,8 @@ class Main:
     def new_instance(parent_dir='.'):
         gis = hn.Gis(parent_dir)
         df = hn.HardSampling.generate()
+
+        gis.load()
         return Main(gis, df)
 
     def __init__(self, gis, df):
@@ -42,7 +44,7 @@ class Main:
         self.__df = df  # Immutable
 
     def gdf(self):
-        return self.__gis.gdf
+        return self.__gis.gdf()
 
     def df(self):
         return self.__df
