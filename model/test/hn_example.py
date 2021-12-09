@@ -39,9 +39,9 @@ class Gis:
     DEPARTMENT_COL = 'NAME_1'
     AREA_COL = 'Área Departamento (HA)'
 
-    def __init__(self):
+    def __init__(self, parent_dir='.'):
         self.__df = Gis.get_df()
-        self.parent_dir = '.'
+        self.parent_dir = parent_dir
 
     def df(self):
         return self.__df
