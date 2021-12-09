@@ -16,6 +16,7 @@ Author: Tobias Briones
 """
 import pandas as pd
 import plotly.express as px
+from IPython.core.display import display
 
 DEF_STRATUM_SAMPLING_SIZE = 1_000
 
@@ -43,10 +44,10 @@ class Sampling:
         return self.__stratum_filter
 
     def run(self):
-        result = Result()
-
-        strata = self.__stratum_filter.filter()
-        return result
+        self.__stratum_filter.filter()
+        return Result(
+            self.__stratum_filter
+        )
 
 
 class Result:
@@ -54,9 +55,13 @@ class Result:
 
     def __init__(
         self,
-        strata=pd.DataFrame()
+        stratum_filter
     ):
-        self.strata = strata
+        self.__stratum_filter = stratum_filter
+
+    def show_stratum_filter(self):
+        self.__stratum_filter.plot_stratum_areas()
+        display(self.__stratum_filter.result())
 
 
 class StratumFilter:
@@ -64,16 +69,24 @@ class StratumFilter:
         self.__df = df
         self.__cols = cols
         self.__area_threshold = 0
+        self.__result = pd.DataFrame()
 
     def area_threshold(self, value):
         self.__area_threshold = value
+
+    def result(self):
+        return self.__result
+
+    def to_list(self):
+        return list(self.__result[self.__cols.stratum])
 
     def filter(self):
         areas = self.stratum_areas()
         curated = areas[
             areas[self.__cols.harvested_area] > self.__area_threshold
             ]
-        return curated.reset_index(drop=True)
+        self.__result = curated.reset_index(drop=True)
+        return self.__result
 
     def plot_stratum_areas(self):
         fig = px.bar(
