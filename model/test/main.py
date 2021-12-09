@@ -63,8 +63,8 @@ class ColumnConfig:
         stratum='stratum',
         harvested_area='harvested_area'
     ):
-        self.__stratum_col = stratum
-        self.__harvested_area_col = harvested_area
+        self.stratum = stratum
+        self.harvested_area = harvested_area
 
 
 def cols():
