@@ -14,7 +14,10 @@ Contiene la implementación del modelo de muestreo virtual para suelo agrícola.
 
 Author: Tobias Briones
 """
+
+import numpy as np
 import pandas as pd
+import geopandas as gpd
 import plotly.express as px
 from IPython.core.display import display
 
@@ -28,10 +31,10 @@ class Sampling:
 
     @staticmethod
     def from_main(main):
-        return Sampling(main.gdf(), main.df(), main.cols())
+        return Sampling(main.gis(), main.df(), main.cols())
 
-    def __init__(self, gdf, df, cols):
-        self.__gdf = gdf  # Immutable
+    def __init__(self, gis, df, cols):
+        self.__gis = gis  # Immutable
         self.__df = df  # Immutable
         self.__cols = cols  # Immutable
         self.__n = DEF_STRATUM_SAMPLING_SIZE
@@ -48,6 +51,9 @@ class Sampling:
         return Result(
             self.__stratum_filter
         )
+
+    def new_sampling_simulator(self):
+        return SamplingSimulator(self.__n, self.__cols, self.__gis)
 
 
 class Result:
@@ -102,3 +108,58 @@ class StratumFilter:
             self.__cols.harvested_area
         ]
         return grouped.sum().reset_index()
+
+
+class SamplingSimulator:
+    def __init__(self, h_n, cols, gis):  # Immutable
+        self.__h_n = h_n
+        self.__cols = cols
+        self.__gis = gis
+
+    def simulate(self, stratum):
+        gdf = self.__gis.gdf()
+        idx = self.__get_stratum_idx(stratum)
+
+        for i, row in idx.iterrows():
+            subset, subset_n = (row[self.__cols.gis_subset], int(row['n']))
+            current_gdf = gdf[gdf[self.__cols.gis_subset] == subset]
+            points = self.__random_points(subset_n, current_gdf)
+
+            current_gdf.plot()
+            points.plot()
+
+    def __get_stratum_idx(self, stratum):
+        """
+        Calcula todos los subconjuntos del suelo agrícola que conforman
+        el estrato dado y el tamaño de la muestra por subconjunto a
+        tomar relativo al área de cada subconjunto.
+        """
+
+        df = self.__gis.df()
+        sample_stratum = df[df[self.__cols.stratum] == stratum]
+        total_area = sample_stratum[self.__cols.gis_area].squeeze().sum()
+        sample_stratum.loc[:, 'weight'] = sample_stratum[
+                                              self.__cols.gis_area
+                                          ] / total_area
+        sample_stratum.loc[:, 'n'] = sample_stratum['weight'] * self.__h_n
+
+        return pd.DataFrame({
+            self.__cols.gis_subset: sample_stratum[self.__cols.gis_subset],
+            'n': sample_stratum['n']
+        })
+
+    @staticmethod
+    def __random_points(n, gdf):
+        """
+        Calcula puntos aleatorios en los límites del mapa dado. Solo
+        toma aquellos puntos válidos por lo que el total de puntos
+        generados es menor o igual a n.
+        """
+
+        x_min, y_min, x_max, y_max = gdf.total_bounds
+        x = np.random.uniform(x_min, x_max, n)
+        y = np.random.uniform(y_min, y_max, n)
+
+        points = gpd.GeoSeries(gpd.points_from_xy(x, y))
+        points = points[points.within(gdf.unary_union)]
+        return points
