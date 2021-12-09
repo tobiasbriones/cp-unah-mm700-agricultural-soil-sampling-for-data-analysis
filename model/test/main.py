@@ -43,6 +43,9 @@ class Main:
         self.__gis = gis  # Immutable
         self.__df = df  # Immutable
 
+    def gis(self):
+        return self.__gis
+
     def gdf(self):
         return self.__gis.gdf()
 
