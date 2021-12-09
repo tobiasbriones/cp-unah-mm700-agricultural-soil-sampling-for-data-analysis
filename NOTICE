@@ -10,6 +10,6 @@ Project bibliography found at ./bibliography.bib or at the full-article paper.
 --------------------------------------------------------------------------------
 
 GADM data (version 3.6) (Honduras Country Shapefile):
-Located at ./model/data/gis.
+Located at ./model/test/data/gis.
 From https://gadm.org/download_country.html.
 Licensed under the GADM License found at https://gadm.org/license.html.
