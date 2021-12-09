@@ -48,8 +48,5 @@ class Main:
         return self.__df
 
     def filter(self):
-        filter = self.__df[DEF_STRATUM_COL] != hn.Stratum.NONE
-        self.__df = self.__df[filter].reset_index(drop=True)
-        #
-        # Aquí va el filtro por umbral de área cosechada
-        #
+        valid_stratum = self.__df[DEF_STRATUM_COL] != hn.Stratum.NONE
+        self.__df = self.__df[valid_stratum].reset_index(drop=True)
