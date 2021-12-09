@@ -50,3 +50,22 @@ class Main:
     def filter(self):
         valid_stratum = self.__df[DEF_STRATUM_COL] != hn.Stratum.NONE
         self.__df = self.__df[valid_stratum].reset_index(drop=True)
+
+
+class ColumnConfig:
+    """Define los atributos para el muestreo virtual"""
+
+    def __init__(
+        self,
+        stratum='stratum',
+        harvested_area='harvested_area'
+    ):
+        self.__stratum_col = stratum
+        self.__harvested_area_col = harvested_area
+
+
+def cols():
+    return ColumnConfig(
+        stratum=hn.STRATUM_COL,
+        harvested_area=hn.HardSampling.HARVESTED_AREA_COL
+    )
