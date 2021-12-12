@@ -3,6 +3,7 @@
 \usepackage[spanish]{babel}
 \usepackage[letterpaper, portrait, margin=2cm]{geometry}
 \usepackage[style=ieee]{biblatex}
+\usepackage[table,xcdraw]{xcolor}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -14,13 +15,39 @@
 \usepackage{float}
 \usepackage{array}
 \usepackage{dirtytalk}
-\usepackage[table,xcdraw]{xcolor}
+\usepackage{listings}
 
 \addbibresource{bibliography.bib}
 
 \newtheorem{definition}{Definición}
 
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
 
 \title{
 MODELO DE MUESTREO VIRTUAL DE SUELOS AGRÍCOLAS EN HONDURAS PARA ANALÍTICA EN BASE AL MUESTREO ALEATORIO SIMPLE Y ESTRATIFICADO
@@ -50,11 +77,6 @@ Diciembre 2021
     
     \textit{Proyecto de Seminario de Investigación Presentado a la Carrera de Licenciatura en Matemática}
 \end{center}
-
-\thispagestyle{empty}
-\pagestyle{empty}
-\tableofcontents
-\listoffigures
 
 
 % ------------------------------  INTRODUCTION  ------------------------------ %
@@ -110,6 +132,83 @@ Dado las limitantes de esta investigación, se procederá a realizar las siguien
 
 
 % ------------------------------  END INTRODUCTION  ------------------------------ %
+
+
+
+% ------------------------------  PROBLEM STATEMENT  ------------------------------ %
+
+
+\section{Planteamiento del Problema}
+
+\subsection{Hipótesis}
+
+Todos los suelos agrícolas se pueden particionar como lotes y existe una relación de homogeneidad entre cada lote.
+
+\subsection{Objetivos}
+
+\subsubsection{Objetivo General}
+
+Modelar un proceso en el cual se obtengan muestras de lotes de suelo agrícola dado las siguientes condiciones:
+
+\begin{itemize}
+    \item Asumir un conjunto de datos ya muestreados físicamente (por parte de la empresa agrícola) como entrada del proceso.
+    
+    \item El muestreo es estratificado basado en el MAS.
+    
+    \item El proceso es de utilidad para las etapas iniciales de analítica.
+    
+    \item La salida del proceso (el muestreo) permite posteriormente entrenar modelos de analítica más eficientemente al minimizar sus entradas con respecto a la muestra original.
+\end{itemize}
+
+\subsubsection{Objetivos Específicos}
+
+\begin{itemize}
+    \item Encontrar inductivamente modelos generales para analizar los suelos y lotes. 
+    
+    \item Diseñar un proceso para determinar un muestreo estratificado de lotes como producto mínimo viable para este estudio.
+    
+    \item Identificar preguntas clave para obtener estratos a partir de encuestas a los usuarios.
+    
+    \item Establecer un marco teórico estadístico para medir las variables en cuestión.
+    
+    \item Diseñar un modelo de selección de lotes por homogeneidad.
+    
+    \item Medir las relaciones para determinar cuan fina será la partición.
+    
+    \item Concluir en un resultado final que pueda ser utilizado por software de analítica.
+    
+    \item Proveer las herramientas de análisis de datos para visualizar y configurar la entrada y salida del proceso.
+\end{itemize}
+
+
+\subsection{Preguntas de Investigación}
+
+\begin{itemize}
+    \item ¿Qué tan curados son los datos (muestra física) que manejan los usuarios para hacer análisis de rendimiento?
+    
+    \item ¿Qué tiempo y espacio de complejidad tienen los modelos de analítica para optimización de rendimiento?
+    
+    \item ¿Qué medio (correo electrónico, papel, app, etc.) electrónico o físico es el más eficiente para obtener encuestas agrícolas de usuarios en Honduras?
+    
+    \item ¿Qué usuarios internos son los más claves para preguntas específicas?
+    
+    \item ¿Qué usuarios internos son los más claves para preguntas generales?
+    
+    \item ¿Qué modelo o modelos estadísticos se utilizan para generar muestreos estratificados a partir de un conjunto de datos?
+    
+    \item ¿Cuáles son los estratos de suelos agrícolas en Honduras?
+    
+    \item ¿Cómo es la entrada (el muestreo virtual) de los procesos de analítica para análisis de suelos agrícola en términos de transformaciones (filtrado, mapeo, etc.), estructura (desnormalizado, relacional, etc.) con respecto al muestreo físico?
+    
+    \item ¿Qué información geográfica manejan los usuarios sobre sus fincas, lotes o suelos agrícolas?
+    
+    \item ¿El muestreo físico histórico está relacionado con el actual o evoluciona en función de las zafras?
+    
+    \item ¿Qué tipo de cultivo/cosecha/variedad se maneja en las fincas de Honduras? ¿Qué relaciones (principalmente biológicas) hay entre ellas?
+\end{itemize}
+
+
+% ------------------------------  END PROBLEM STATEMENT  ------------------------------ %
 
 
 % ------------------------------  METHODOLOGY  ------------------------------ %
@@ -802,6 +901,350 @@ Muchas de estas soluciones para este tipo común de errores deben de ayudar a me
 
 
 % ------------------------------ END OF  FRAMEWORK ------------------------------ %
+
+
+% ------------------------------ PROPOSED PROCESS ------------------------------ %
+
+\section{Proceso Propuesto}
+
+Se va a enunciar a continuación un problema particular del proceso propuesto determinado por este estudio. El problema es un producto mínimo viable que funciona como artefacto de investigación. El problema consiste en una exageración donde se toma el cultivo de azúcares en Honduras (literalmente todo el territorio de Honduras) y el terreno se clasifica por departamento. Para obtener los estratos, como se ha mencionado previamente, es conveniente recurrir a las variedades por lo que será útil definir algunas variedades de azúcares. Por último se ha de elaborar el muestreo virtual y reporte de los datos obtenidos.
+
+\bigbreak
+
+El analista de datos deberá interpretar y generalizar este proceso en una base de caso por caso para poder aplicarlo correctamente. La etapa de analítica es muy pesada de trabajo ya que hay que abrir y definir junto con los demás interesados todo el contexto del problema. En este ejemplo se trata con cultivos de azúcar y un terreno ya predispuesto así como la selección de azúcares por variedad como estrategia de homogeneización. Todas estas condiciones van a cambiar en un caso real pero se pueden considerar abstraídas mediante estos resultados por lo que el analista de datos podrá ser capaz de generalizar.
+
+\bigbreak
+
+Los datos en particular se generarán de forma aleatoria al no contar con un conjunto de datos reales ya que esto estaría fuera del alcance de investigación.
+
+\bigbreak
+
+En los párrafos con un símbolo de implicación se dará una generalización del párrafo anterior para el analista de datos.
+
+\subsection{Enunciado}
+
+Asumir que en todo el territorio de Honduras se cultiva azúcar, es decir --la finca o suelo agrícola consiste en todo el territorio del país-- y se proporcionan los datos de Zafra 2021. Mediante un SIG se ha obtenido un mapa del área clasificada por departamento, en total, 18 departamentos.
+
+\bigbreak
+
+$\implies$ El analista de datos en esta etapa deberá contar con la muestra física y el modelo del suelo agrícola probablemente en formato shapefile (shp). Por tanto, el conjunto de datos puede comprender a cualquier tipo de  cultivo además de azúcar y cualquier zona geográfica que deberá tener
+cierta delimitación geográfica.
+
+\bigbreak
+
+A fin de obtener los estratos se ha establecido usar la variedad --variable que define propiedades biológicas de los cultivos-- para clasificar el suelo. Al ser cosecha de azúcar, se asume que se cultivan las variedades:
+
+\begin{itemize}
+    \item Ninguna
+    \item CP 72-2086
+    \item Mex 69-290
+    \item Mex 79-431
+    \item ITV 92-1424
+\end{itemize}
+
+Las cuales son variedades muy conocidas.
+
+\bigbreak
+
+$\implies$ El analista obtendrá una lista mucho más grande de variedades disponibles en el suelo.
+
+\bigbreak
+
+Se debe de obtener un muestreo físico con la siguiente estructura mínima:
+
+\begin{itemize}
+    \item Estrato
+    \item Área Cosechada (HA)
+    \item TA/HA Real
+\end{itemize}
+
+Donde el conjunto de datos representa los registros tomados por el usuario en ese año de zafra.
+
+\subsection{Análisis Geográfico}
+
+Este proceso consiste en un análisis del SIG estándar. Se definen las constantes, se carga el archivo shapefile y se le da formato correspondiente agregando demás columnas. Se identifica como variable independiente a la columna departamento.
+
+\bigbreak
+
+El análisis del SIG da un reporte de alto nivel sobre el muestreo físico. Luego se carga el \textit{DataFrame} del muestreo físico para zafra año 2021 en este caso, entonces se desarrolla el MAS Estratificado y se establece el reporte del muestreo obtenido. Con esto, se puede hacer finalmente un análisis de fertilidad consistente y más eficiente. Por tanto, el análisis geográfico es la de las tres etapas mencionadas.
+
+\subsubsection{Recopilación de Datos}
+
+Este problema es una exageración que permite de momento llevar a cabo el proceso propuesto de muestreo virtual. La mayor parte de datos creados en este problema no tienen relación con la realidad pero si sirven como modelo para ser aplicado a un caso con datos reales.
+
+\bigbreak
+
+Los datos del muestreo físico son recolectados mediante la desnormalización de la base de datos del usuario. Esto implica que en análisis de datos se ven muchos fenómenos como redundancia, etc. El cultivo de azúcares se da por zafra, en este caso, se asume una zafra 2021 la cual da todos los registros de ese año.
+
+\bigbreak
+
+Las 4 \href{https://www.gob.mx/conadesuca/es/articulos/variedades-de-cana-de-azucar?idiom=es}{variedades} tomadas son una referencia importante que se encontrará de forma mucho más diversa en una base de datos real. Estas son variedades significativas, en un caso real se tiene una gran cantidad de variedades de azúcares por lo que el analista deberá tomar solo aquellas significativas para reducir la carga de la muestra. Otras variedades de azúcares significativas incluye, a saber, \textit{CP 73-1547}, \textit{RB 86-7515}, etc. Las encuestas pueden ser herramientas adecuadas para la obtención de esta información por parte de los interesados.
+
+\bigbreak
+
+Por tanto, se debe de tomar una variable adecuada física o biológica como la variedad del cultivo para crear cada estrato con unidades de muestreo homogéneas. Al definir inicialmente los estratos, se tendrá una lista muy grande de opciones por lo que será necesario tomar un subconjunto significativo de estos estratos filtrando aquellos que no son significativos de acuerdo al criterio establecido por el analista. Después de este filtrado, se obtienen los estratos definitivos y el mapa original queda con áreas no representativas por lo que se define el estrato vacio \textit{Ninguno}. Originalmente puede que ya existan áreas no representativas como zonas de construcción, contaminadas, etc.
+
+\subsubsection{Filtrado}
+
+El filtrado inicial se ha definido como sigue:
+
+\begin{itemize}
+    \item Remover estratos vacíos.
+    \item Remover estratos con variedades insignificantes.
+\end{itemize}
+
+Para determinar las variedades insignificantes se establece una cota mínima (umbral) de área cosechada por variedad, estos datos vienen del muestreo físico. Por tanto, la condición para determinar si una variedad es significante es si pertenece a las cuatro variedades definidas arriba o si el área cosechada para esa variedad supera un umbral determinado. En este problema solo se filtrará tomando las cuatro variedades comúnes.
+
+\subsection{Muestreo Físico}
+
+Este \textit{DataFrame} contiene los supuestos datos de zafra $2021$ en el suelo agrícola. Es decir, todos los registros de variedades tomados en ese año. Además, en un conjunto de datos original existen muchas otras variables que pueden ser usadas para otros cálculos. Este \textit{DataFrame} solo contiene el filtrado con las columnas correspondientes para el análisis de rendimiento.
+
+\subsection{Resumen de Muestro}
+
+En las siguientes dos tablas se listan los datos del SIG y del muestreo físico filtrado para análisis de rendimiento correspondientemente.
+
+\subsubsection{Modelo de Muestreo}
+
+\textbf{Muestro Físico}
+
+\bigbreak
+
+El tamaño de la población $N = 5,000$ unidades de muestreo.
+
+\bigbreak
+
+Unidad de área: Hectárea.
+
+\bigbreak
+
+\textbf{Muestreo Virtual}
+
+\bigbreak
+
+\textbf{Estratos}
+
+\bigbreak
+
+Se han definido cuatro estratos significativos correspondientes a variedades de azúcares y uno vacío. Por tanto, $H = \{ Ninguno, H_1, ... , H_4 \}$.
+
+\bigbreak
+
+Tamaño de muestreo por estrato $(H_n) = t_h * factor$ donde \textit{factor} en $[0,1]$ representa el porcentaje de unidades aleatorias a tomar en cada estrato $H$ respecto a $t_h$.
+
+\bigbreak
+
+Con respecto al conjuntos de datos geográficos originalmente cargado, este simplemente cuenta con una (generosa) columna \textit{geography} la cual contiene la información vectorial del mapa del suelo agrícola. También fue útil la columna \textit{DEPARTMENT\_COL} conteniendo la partición hecha por el usuario. En este caso, los estratos son por variedad significante por lo que el problema debe ser tal que los subconjuntos de la partición del mapa (\say{departamentos}) contienen únicamente una variedad. Esto se detalla más en la sección de visualización abajo. A partir de estos criterios, el analista deberá poder obtener la información geográfica útil del usuario.
+
+\subsection{Visualización de Muestro}
+
+En los siguientes bloques se visualizan los datos obtenidos arriba.
+
+\bigbreak
+
+Por ejemplo, en los \say{departamentos} en azul (Cortés, Atlántida, Yoro,Ocotepeque, Lempira y El Paraíso) se cultiva variedad \textit{CP 72-2086}. Así, esos $6$ \say{departamentos} forman un estrato.
+
+\subsection{Modelo}
+
+El resultado del muestreo virtual se desarrolla en esta sección.
+
+\bigbreak
+
+Se importa el módulo de muestreo que contiene la implementación del modelo de muestreo virtual y el módulo que contiene el caso de prueba para resolución:
+
+\bigbreak
+
+\begin{lstlisting}[language=Python, caption=Importar dependencias]
+import sampling
+from test import main
+\end{lstlisting}
+
+\bigbreak
+
+Se crea una instancia del problema conteniendo la información geográfica y muestreo físico generado con datos aleatorios. Recordar que cada vez al correr el programa se genera un problema con nuevos datos y que los datos generados aleatoriamente no producen resultados comparables a la realidad pero el proceso es totalmente válido para cualquier caso de uso tanto de prueba como real.
+
+\bigbreak
+
+\begin{lstlisting}[language=Python, caption=Importar dependencias]
+main = main.Main.new_instance('./test')
+sampling = sampling.Sampling.from_main(main)
+\end{lstlisting}
+
+\bigbreak
+
+Imprimiendo el muestreo físico se obtuvo el conjunto de datos siguiente:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \rowcolor[HTML]{CBCEFB} 
+    \textbf{} & \textbf{Estrato} & \textbf{Área Cosechada (HA)} & \textbf{TA/HA Real} \\ \hline
+    0         & CP 72-2086       & 1730.4                       & 8.6                 \\ \hline
+    \rowcolor[HTML]{EFEFEF} 
+    1         & ITV 92-1424      & 325.6                        & 1.2                 \\ \hline
+    2         & Ninguno          & 2414.6                       & 9.8                 \\ \hline
+    \rowcolor[HTML]{EFEFEF} 
+    3         & CP 72-2086       & 3867.4                       & 9.9                 \\ \hline
+    4         & Mex 69-290       & 1683.8                       & 4.2                 \\ \hline
+    \end{tabular}
+    \caption{Primeros datos del muestreo físico generado}
+\end{table}
+
+Donde como se estableció en el planteamiento del problema, este \textit{DataFrame} contiene $5,000$ registros.
+
+\bigbreak
+
+En el siguiente bloque es donde se debe configurar el modelo para que realice el muestreo:
+
+\bigbreak
+
+\begin{lstlisting}[language=Python, caption=Configurar el muestreo virtual]
+# Configurar muestreo
+sampling.stratum_sampling_size(400)
+
+# Configurar filtr de estratos
+stratum_filter = sampling.stratum_filter()
+stratum_filter.area_threshold(2_480_000)
+
+# Correr modelo de muestreo virtual
+result = sampling.run()
+sampled_df = result.sampling()
+
+result.show_sampling()
+result.show_stratum_filter()
+\end{lstlisting}
+
+\bigbreak
+
+Para futuras versiones se tendrá en cuenta que se debería poder pasar el vector que define el tamaño de la muestra para cada estrato en lugar de pasar un único tamaño de la muestra para todos los estratos. Esto es, $n_h < N_h$ debería ser seleccionado para cada estrato. El resultado del muestreo da:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \rowcolor[HTML]{CBCEFB} 
+    \textbf{} & \textbf{Estrato}                                          & \textbf{Área Cosechada (HA)} & \textbf{TA/HA Real} \\ \hline
+    0         & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} CP 72-2086} & 4773.5                       & 1.4                 \\ \hline
+    \rowcolor[HTML]{EFEFEF} 
+    1         & {\color[HTML]{171717} CP 72-2086}                         & 2341.9                       & 5.6                 \\ \hline
+    2         & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} CP 72-2086} & 148.7                        & 6.9                 \\ \hline
+    \rowcolor[HTML]{EFEFEF} 
+    3         & {\color[HTML]{171717} CP 72-2086}                         & 1794.2                       & 0.6                 \\ \hline
+    4         & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} CP 72-2086} & 2061.7                       & 3.3                 \\ \hline
+    ...       & ...                                                       & ...                          & ...                 \\ \hline
+    795       & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} Mex 79-431} & 899.8                        & 0.9                 \\ \hline
+    \rowcolor[HTML]{EFEFEF} 
+    796       & {\color[HTML]{171717} Mex 79-431}                         & 4232.5                       & 8.9                 \\ \hline
+    797       & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} Mex 79-431} & 827.2                        & 7.5                 \\ \hline
+    \rowcolor[HTML]{EFEFEF} 
+    798       & {\color[HTML]{171717} Mex 79-431}                         & 2025.5                       & 6.6                 \\ \hline
+    799       & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} Mex 79-431} & 4332.8                       & 4.6                 \\ \hline
+    \end{tabular}
+    \caption{Resultado del muestreo virtual}
+\end{table}
+
+El cual contiene $800$ registros que se comprobará que son representativos. Esto comparado a los $5,000$ registros originales. Notar que los datos se han agrupado por variedad en el resultado.
+
+\bigbreak
+
+Además de esto, el modelo también produce un reporte para ver el filtrado inicial que se hizo para filtrar todos aquellos estratos insignificantes. De acuerdo al valor de umbral asignado al algoritmo se obtuvieron que solo esos dos estratos son significantes:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\paperwidth]{img/process-stratum-filter-report.png}
+    \caption{Resultado del filtro de estratos}
+\end{figure}
+
+Por lo que las variedades (\textit{ITV 92-1424
+}, $2.39938M$), (\textit{Mex 69-290}, $2.431765M$) y (\textit{Ninguno}, $2.435103M$) quedan fuera definitivamente del conjunto de datos al ser insignificantes por tener un valor de área cosechada menor al umbral establecido. Aquí también se considerará para el modelo filtrar siempre el estrato \textit{Ninguno} pero de momento, aún se toma en cuenta. En un caso real, habrán muchos más estratos y se verá que muchos son claramente insignificantes.
+
+\bigbreak
+
+Al tener los resultados, el analista debe poder verificar la efectividad del modelo. Esto se demuestra a continuación. Se utilizó el análisis de rendimiento como aplicación del muestro virtual.
+
+\bigbreak
+
+\begin{lstlisting}[language=Python, caption=Análisis de rendimiento]
+# Rendimiento
+def get_yield(df):
+    grouped = df.groupby(hn.STRATUM_COL)
+    abs_yield = grouped[hn.HardSampling.YIELD_COL].sum().reset_index()
+    abs_areas = grouped[hn.HardSampling.HARVESTED_AREA_COL].sum().reset_index()
+    yield_result = abs_yield.merge(abs_areas)
+    yield_result["Rendimiento"] = abs_yield[hn.HardSampling.YIELD_COL] / abs_areas[hn.HardSampling.HARVESTED_AREA_COL]
+    return yield_result
+\end{lstlisting}
+
+\bigbreak
+
+Notar que se suman los valores de rendimiento y de área cosechada agrupado como estratos lo que da valores absolutos y luego se toma un valor ponderado como el rendimiento de cada variedad.
+
+\bigbreak
+
+Por último, se mide el error relativo al computar el rendimiento del conjunto de datos originales contra el conjunto de datos del muestro virtual:
+
+\bigbreak
+
+\begin{lstlisting}[language=Python, caption=Comprobación de la eficiencia del muestro virtual obtenido]
+sampled_yield = get_yield(sampled_df)
+real_yield = get_yield(hard_sampling)
+
+sampled_yield['Rendimiento real'] = real_yield['Rendimiento']
+sampled_yield['Error relativo (%)'] = (abs(sampled_yield['Rendimiento'] - real_yield['Rendimiento']) / real_yield['Rendimiento']) * 100
+\end{lstlisting}
+
+\bigbreak
+
+
+\begin{table}[H]
+    \tiny
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+    \hline
+    \rowcolor[HTML]{CBCEFB} 
+      & Estrato    & \begin{tabular}[c]{@{}l@{}}TA/HA \\ Real\end{tabular} & \begin{tabular}[c]{@{}l@{}}Área Cosechada\\  (HA)\end{tabular} & Rendimiento & \begin{tabular}[c]{@{}l@{}}Rendimiento \\ Real\end{tabular} & \begin{tabular}[c]{@{}l@{}}Error \\ Relativo (\%)\end{tabular} \\ \hline
+    0 & CP 72-2086 & 1947.6                                                & 960109.2                                                       & 0.0020285   & 0.0020283                                                   & 0.0086127                                                      \\ \hline
+    \rowcolor[HTML]{EFEFEF} 
+    1 & Mex 79-431 & 1914.0                                                & 979276.8                                                       & 0.0019545   & 0.0020501                                                   & 4.6667605                                                      \\ \hline
+    \end{tabular}
+    \caption{Comparación de muestreo físico contra muestreo virtual}
+\end{table}
+
+Si el tamaño de muestra por estrato se baja a un valor demasiado pequeño el error relativo se vuelve muy grande en magnitudes de $20-150\%$ por lo cual esta es una forma de comprobar la configuración correcta del muestreo virtual. 
+
+\bigbreak
+
+Con esta configuración el analista podrá desplegar a producción datos históricos correctamente muestreados incrementado significativamente el tiempo de ejecución de los modelos de ciencia de datos que toman como alimento estos datos históricos y que probablemente se actualizan a menudo y corren periódicamente en la nube la cual además puede tener limitaciones de recursos.
+
+\section{Conclusiones}
+
+Se desarrolló un modelo de muestro virtual para suelo agrícola que consiste en una herramienta mínima viable como artefacto de investigación. El modelo implementó una API que es de utilidad para el analísta de datos y puede ser configurada y extendida en funcionalidad. 
+
+\bigbreak
+
+Se desarrolló un marco teórico para entender mejor ambas partes interesadas, a saber, la empresa de analítica y agrícola con cierto enfoque en Honduras. Esto sirve al analísta a poder configurar el modelo de muestreo y obtener información clave sobre como definir los estratos y la obtención del SIG del suelo apropiada para la visualización del muestreo. Se ha tomado en cuenta el uso de encuestas como herramienta de anílisis de sistemas para lograr este objetivo.
+
+\bigbreak
+
+Finalmente, se demostró el funcionamiento y eficiencia del prototipo con datos irreales y sin mucho sentido debido a las complicaciones para obtener un conjunto de datos real de acceso libre. Esto indica que el analísta puede generalizar el proceso de muestreo en una base de caso por caso y que al aplicar la herramienta de muestreo será de utilidad para un caso de uso real.
+
+\subsection{Recomendaciones}
+
+Una vez aplicados los conocimientos y resultados de la tesis se recomienda:
+
+\begin{itemize}
+    \item Proyecto en \href{https://github.com/tobiasbriones/cp-unah-mm700-agricultural-soil-sampling-for-data-analysis}{GitHub}.
+    
+    \item Dar uso a la POO para crear APIs que sean de útiles y reutilizables.
+    
+    \item Extender el modelo con cálculos estadísticos para reportar y automatizar la selección de valores (e.g. $h_n$).
+    
+    \item Crear más documentación de alto nivel para entender el proceso de muestreo al trabajar en equipo y crear aplicaciones.
+\end{itemize}
+
+
+% ------------------------------ END OF PROPOSED PROCESS ------------------------------ %
+
 
 \section{Anexos}
 
