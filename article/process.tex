@@ -388,7 +388,31 @@ Si el tamaño de muestra por estrato se baja a un valor demasiado pequeño el er
 
 Con esta configuración el analista podrá desplegar a producción datos históricos correctamente muestreados incrementado significativamente el tiempo de ejecución de los modelos de ciencia de datos que toman como alimento estos datos históricos y que probablemente se actualizan a menudo y corren periódicamente en la nube la cual además puede tener limitaciones de recursos.
 
-\section{Conclusiones y Recomendaciones}
+\section{Conclusiones}
+
+Se desarrolló un modelo de muestro virtual para suelo agrícola que consiste en una herramienta mínima viable como artefacto de investigación. El modelo implementó una API que es de utilidad para el analísta de datos y puede ser configurada y extendida en funcionalidad. 
+
+\bigbreak
+
+Se desarrolló un marco teórico para entender mejor ambas partes interesadas, a saber, la empresa de analítica y agrícola con cierto enfoque en Honduras. Esto sirve al analísta a poder configurar el modelo de muestreo y obtener información clave sobre como definir los estratos y la obtención del SIG del suelo apropiada para la visualización del muestreo. Se ha tomado en cuenta el uso de encuestas como herramienta de anílisis de sistemas para lograr este objetivo.
+
+\bigbreak
+
+Finalmente, se demostró el funcionamiento y eficiencia del prototipo con datos irreales y sin mucho sentido debido a las complicaciones para obtener un conjunto de datos real de acceso libre. Esto indica que el analísta puede generalizar el proceso de muestreo en una base de caso por caso y que al aplicar la herramienta de muestreo será de utilidad para un caso de uso real.
+
+\subsection{Recomendaciones}
+
+Una vez aplicados los conocimientos y resultados de la tesis se recomienda:
+
+\begin{itemize}
+    \item Proyecto en [GitHub](https://github.com/tobiasbriones/cp-unah-mm700-agricultural-soil-sampling-for-data-analysis).
+    
+    \item Dar uso a la POO para crear APIs que sean de útiles y reutilizables.
+    
+    \item Extender el modelo con cálculos estadísticos para reportar y automatizar la selección de valores (e.g. $h_n$).
+    
+    \item Crear más documentación de alto nivel para entender el proceso de muestreo al trabajar en equipo y crear aplicaciones.
+\end{itemize}
 
 % -------------------- ANEXOS
 
