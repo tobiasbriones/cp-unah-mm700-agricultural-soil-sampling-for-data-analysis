@@ -12,9 +12,13 @@ full-article paper.
 
 ### Hard-copied
 
-- GADM data (version 3.6) (Honduras Country Shapefile)
+- GADM data (version 3.6) (Honduras Country Shapefile):
     - Located at [./model/test/data/gis](./model/test/data/gis).
     - From https://gadm.org/download_country.html.
     - Copyright © 2018-2021 GADM.
     - Licensed under the GADM License found at https://gadm.org/license.html.
-    
+
+- Third party figures:
+    - Located at [./ref](./ref).
+    - From respective bibliography citation.
+  
