@@ -16,9 +16,9 @@ check out the article for more details.
 
 For v2021.12:
 
-- Full article: [article](https://github.com/tobiasbriones/cp-unah-mm700-agricultural-soil-sampling-for-data-analysis/releases/download/2021.12/research-2021.12.pdf)
-- Presentation notebook: [article](https://github.com/tobiasbriones/cp-unah-mm700-agricultural-soil-sampling-for-data-analysis/releases/download/2021.12/process-2021.12.pdf)
-- More: [v2021.12 release](https://github.com/tobiasbriones/cp-unah-mm700-agricultural-soil-sampling-for-data-analysis/releases/tag/2021.12)
+- Full article: [article](https://github.com/tobiasbriones/cp-unah-mm700-agricultural-soil-sampling-for-data-analysis/releases/download/v2021.12/research-2021.12.pdf)
+- Presentation notebook: [article](https://github.com/tobiasbriones/cp-unah-mm700-agricultural-soil-sampling-for-data-analysis/releases/download/v2021.12/process-2021.12.pdf)
+- More: [v2021.12 release](https://github.com/tobiasbriones/cp-unah-mm700-agricultural-soil-sampling-for-data-analysis/releases/tag/v2021.12)
 
 ## Project Structure
 
