@@ -48,9 +48,9 @@ Copyright © 2021 Tobias Briones. All rights reserved.
 ### License
 
 Research licensed under the [CC-BY-4.0 License](./LICENSE-CC). Code licensed
-under the [BSD 3-Clause License](./LICENSE-BSD). See [License](./LICENSE.md).
+under the [BSD 3-Clause License](./LICENSE-BSD). See [LICENSE](./LICENSE.md).
 
 ---
 
 This project contains copies or derivatives of bibliography-sources and
-resources. See [NOTICE.md](./NOTICE.md) for details.
+resources. See [NOTICE](./NOTICE.md) for details.
