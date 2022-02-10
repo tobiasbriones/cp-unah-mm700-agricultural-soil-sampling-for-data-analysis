@@ -1,17 +1,9 @@
 #  Copyright (c) 2021 Tobias Briones. All rights reserved.
 #
 #  SPDX-License-Identifier: BSD-3-Clause
-#
-#  This file is part of Course Project at UNAH-MM700: Agricultural Soil Sampling
-#  for Data Analysis.
-#
-#  This source code is licensed under the BSD-3-Clause License found in the
-#  LICENSE-BSD file in the root directory of this source tree or at
-#  https://opensource.org/licenses/BSD-3-Clause.
 
 """
 Contiene la implementación del modelo de muestreo virtual para suelo agrícola.
-
 Author: Tobias Briones
 """
 
@@ -22,7 +14,7 @@ import geopandas as gpd
 import plotly.express as px
 from IPython.core.display import display
 
-DEF_STRATUM_SAMPLING_SIZE = 1_000
+DEF_STRATUM_SAMPLING_SIZE = 0.8
 
 
 class Sampling:
@@ -40,9 +32,22 @@ class Sampling:
         self.__cols = cols  # Immutable
         self.__n = DEF_STRATUM_SAMPLING_SIZE
         self.__stratum_filter = StratumFilter(df, cols)
+        self.__n_threshold = 1
 
     def stratum_sampling_size(self, value):
+        if value < 0 or value > 1:
+            raise ValueError('Stratum Sampling Size is a floating percentage')
         self.__n = value
+
+    def n_threshold(self, value):
+        """
+        Define un umbral para tomar en cuenta o no el valor de n para cada
+        estrato. Es decir, si h_n <= value para el estrato h, entonces
+        n = 1 y se tomará toda la población del estrato h para el MAS.
+        """
+        if value < 0:
+            raise ValueError('N Threshold must be non-negative')
+        self.__n_threshold = value
 
     def stratum_filter(self):
         return self.__stratum_filter
@@ -72,8 +77,9 @@ class Sampling:
         return pd.concat(sampled_strata)
 
     def __random_sampling(self, stratum_df):
-        h_n = stratum_df[stratum_df.columns[0]].count()
-        units = random.sample(range(0, h_n - 1), self.__n)
+        h_n = len(stratum_df)
+        n = self.__n if h_n > self.__n_threshold else 1
+        units = random.sample(range(0, h_n), int(n * h_n))
         return stratum_df.filter(items=units, axis=0)
 
 
