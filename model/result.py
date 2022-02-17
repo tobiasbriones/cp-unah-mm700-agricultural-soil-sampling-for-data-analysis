@@ -27,7 +27,6 @@ sampling.n_threshold(100)
 # Set up stratum filter
 stratum_filter = sampling.stratum_filter()
 
-# No tomar var. EXPERIMENTAL para abajo
 stratum_filter.area_threshold(400)
 
 # Run virtual sampling model
@@ -36,3 +35,34 @@ sampled_df = result.sampling()
 
 result.show_sampling()
 result.show_stratum_filter()
+
+
+# Test an application for the sample (yield analysis)
+
+def get_yield(df):
+    filtered_df = df[[hn.STRATUM_COL, hn.HardSampling.YIELD_COL,
+                      hn.HardSampling.HARVESTED_AREA_COL]]
+    product_df = filtered_df.copy(deep=True)
+    product_df['Product'] = product_df[hn.HardSampling.YIELD_COL] * product_df[
+        hn.HardSampling.HARVESTED_AREA_COL]
+    dot = product_df.groupby(hn.STRATUM_COL).sum()
+    dot['Rendimiento'] = dot['Product'] / dot[
+        hn.HardSampling.HARVESTED_AREA_COL]
+    return dot.reset_index().drop('Product', axis=1)
+
+
+# The sampled yield computation should be pretty similar to the original one
+sampled_yield = get_yield(sampled_df)
+real_yield = get_yield(hard_sampling)
+
+merge_df = real_yield[[hn.STRATUM_COL, 'Rendimiento']]
+merge_df = merge_df.rename(columns={'Rendimiento': 'Rendimiento Real'})
+
+sampled_yield = sampled_yield.merge(merge_df, on=hn.STRATUM_COL, how='left')
+
+sampled_yield['Error relativo (%)'] = (abs(
+    sampled_yield['Rendimiento'] - sampled_yield['Rendimiento Real']) /
+                                       sampled_yield['Rendimiento Real']) * 100
+
+# display(real_yield)
+display(sampled_yield)
