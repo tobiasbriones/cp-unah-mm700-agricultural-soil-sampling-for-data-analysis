@@ -27,7 +27,6 @@ sampling.n_threshold(100)
 # Set up stratum filter
 stratum_filter = sampling.stratum_filter()
 
-# No tomar var. EXPERIMENTAL para abajo
 stratum_filter.area_threshold(400)
 
 # Run virtual sampling model
