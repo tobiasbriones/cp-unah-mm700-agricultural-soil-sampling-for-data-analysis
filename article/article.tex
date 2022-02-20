@@ -10,55 +10,7 @@
 % this source tree or at https://spdx.org/licenses/CC-BY-4.0.html.
 
 \documentclass[conference]{IEEEtran}
-\usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
-\usepackage[letterpaper, portrait, margin=2cm]{geometry}
-\usepackage[style=ieee]{biblatex}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{hyperref}
-\usepackage{csquotes}
-\usepackage{mathtools}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{array}
-\usepackage{dirtytalk}
-\usepackage{listings}
-
-\addbibresource{bibliography.bib}
-
-\newtheorem{definition}{Definición}
-
-\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
-
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-
-\lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=2
-}
-
-\lstset{style=mystyle}
+\usepackage{article}
 
 \title{
 MODELO DE MUESTREO VIRTUAL DE SUELOS AGRÍCOLAS EN HONDURAS PARA ANALÍTICA EN BASE AL MUESTREO ALEATORIO SIMPLE Y ESTRATIFICADO
@@ -69,7 +21,7 @@ MODELO DE MUESTREO VIRTUAL DE SUELOS AGRÍCOLAS EN HONDURAS PARA ANALÍTICA EN B
 \IEEEauthorblockA{\textit{Universidad Nacional Autónoma de Honduras} \\
 \textit{Carrera de Licenciatura en Matemática}\\
 San Pedro Sula, Honduras \\
-tobias.briones@unah.hn} \\\vspace*{20pt} \normalsize  
+tobias.briones@unah.hn} \\\vspace*{20pt} \normalsize
 Diciembre 2021
 }
 \date{Septiembre 2021}
@@ -83,9 +35,9 @@ Diciembre 2021
 \begin{center}
     \includegraphics[width=0.3\linewidth]{ref/logo-unah.png}\\[4ex]
     \textit{Universidad Nacional Autónoma de Honduras}
-    
+
     \bigbreak
-    
+
     \textit{Proyecto de Seminario de Investigación Presentado a la Carrera de Licenciatura en Matemática}
 \end{center}
 
@@ -146,13 +98,13 @@ Dado las limitantes de esta investigación, se procederá a realizar las siguien
 
 \begin{itemize}
     \item Obtener los modelos iniciales ya establecidos para dichos conjunto de datos, esto a fin de contar con un marco teórico con base al problema.
-    
+
     \item Crear modelos ad hoc parar introducir definiciones de negocio. Esto con visión a que estos resultados deben de poder utilizarse en pro para software de analítica.
-    
+
     \item Desarrollar gráficos, herramientas o simulaciones necesarias para la explicación de los fenómenos. En caso de requerir programación, se utilizará Python ya que se tratan de prototipos y se acopla perfectamente a este proyecto de investigación junto con el soporte en primera clase y estandarización en bibliotecas que tiene en el momento.
-    
+
     \item Crear entrevistas/encuestas con personal del sector agrícola en caso de requerirlo.
-    
+
     \item Dejar un modelo estadístico/computacional como resultado que permita ser implementado y extendido en producción de acuerdo a las necesidades de cada proyecto real en una base de caso por caso.
 \end{itemize}
 
@@ -178,31 +130,31 @@ Modelar un proceso en el cual se obtengan muestras de lotes de suelo agrícola d
 
 \begin{itemize}
     \item Asumir un conjunto de datos ya muestreados físicamente (por parte de la empresa agrícola) como entrada del proceso.
-    
+
     \item El muestreo es estratificado basado en el MAS.
-    
+
     \item El proceso es de utilidad para las etapas iniciales de analítica.
-    
+
     \item La salida del proceso (el muestreo) permite posteriormente entrenar modelos de analítica más eficientemente al minimizar sus entradas con respecto a la muestra original.
 \end{itemize}
 
 \subsubsection{Objetivos Específicos}
 
 \begin{itemize}
-    \item Encontrar inductivamente modelos generales para analizar los suelos y lotes. 
-    
+    \item Encontrar inductivamente modelos generales para analizar los suelos y lotes.
+
     \item Diseñar un proceso para determinar un muestreo estratificado de lotes como producto mínimo viable para este estudio.
-    
+
     \item Identificar preguntas clave para obtener estratos a partir de encuestas a los usuarios.
-    
+
     \item Establecer un marco teórico estadístico para medir las variables en cuestión.
-    
+
     \item Diseñar un modelo de selección de lotes por homogeneidad.
-    
+
     \item Medir las relaciones para determinar cuan fina será la partición.
-    
+
     \item Concluir en un resultado final que pueda ser utilizado por software de analítica.
-    
+
     \item Proveer las herramientas de análisis de datos para visualizar y configurar la entrada y salida del proceso.
 \end{itemize}
 
@@ -211,25 +163,25 @@ Modelar un proceso en el cual se obtengan muestras de lotes de suelo agrícola d
 
 \begin{itemize}
     \item ¿Qué tan curados son los datos (muestra física) que manejan los usuarios para hacer análisis de rendimiento?
-    
+
     \item ¿Qué tiempo y espacio de complejidad tienen los modelos de analítica para optimización de rendimiento?
-    
+
     \item ¿Qué medio (correo electrónico, papel, app, etc.) electrónico o físico es el más eficiente para obtener encuestas agrícolas de usuarios en Honduras?
-    
+
     \item ¿Qué usuarios internos son los más claves para preguntas específicas?
-    
+
     \item ¿Qué usuarios internos son los más claves para preguntas generales?
-    
+
     \item ¿Qué modelo o modelos estadísticos se utilizan para generar muestreos estratificados a partir de un conjunto de datos?
-    
+
     \item ¿Cuáles son los estratos de suelos agrícolas en Honduras?
-    
+
     \item ¿Cómo es la entrada (el muestreo virtual) de los procesos de analítica para análisis de suelos agrícola en términos de transformaciones (filtrado, mapeo, etc.), estructura (desnormalizado, relacional, etc.) con respecto al muestreo físico?
-    
+
     \item ¿Qué información geográfica manejan los usuarios sobre sus fincas, lotes o suelos agrícolas?
-    
+
     \item ¿El muestreo físico histórico está relacionado con el actual o evoluciona en función de las zafras?
-    
+
     \item ¿Qué tipo de cultivo/cosecha/variedad se maneja en las fincas de Honduras? ¿Qué relaciones (principalmente biológicas) hay entre ellas?
 \end{itemize}
 
@@ -261,7 +213,7 @@ Se consultó con diversas fuentes de información para obtener un marco teórico
 
 \section{Marco Teórico}
 
-El muestreo surge de la necesidad de reducir la cantidad de candidatos que van a ser sometidos a un análisis estadístico siempre que estos representen al total de la población en la que pertenecen, es decir, que se obtengan resultados muy similares al hacer el estudio bajo esa muestra como si se hicieran con toda la población. El problema claramente es que las poblaciones (total de individuos de interés para dicho estudio) son a menudo demasiado grandes. Un buen muestreo permite no tener que estudiar a todos los elementos de una población. 
+El muestreo surge de la necesidad de reducir la cantidad de candidatos que van a ser sometidos a un análisis estadístico siempre que estos representen al total de la población en la que pertenecen, es decir, que se obtengan resultados muy similares al hacer el estudio bajo esa muestra como si se hicieran con toda la población. El problema claramente es que las poblaciones (total de individuos de interés para dicho estudio) son a menudo demasiado grandes. Un buen muestreo permite no tener que estudiar a todos los elementos de una población.
 
 \bigbreak
 
@@ -277,9 +229,9 @@ Entre los tipos de muestreo que se han encontrado útiles para medir los suelos 
 
 \begin{itemize}
     \item \textbf{Muestreo Aleatorio Simple (MAS):} Consiste en tomar $n$ puntos aleatorios de la población. Estos puntos deben de tener la misma probabilidad de ser escogidos para que la muestra sea representativa y se toman de forma \say{mezclada}. Por ejemplo, la sangre esta \say{mezclada} en el cuerpo humano, por lo que al tomar una muestra de solo una pizca basta para hacer los análisis ya que esa pizca obtenida es igual que todas las demás.
-    
+
     \item \textbf{Muestreo Simple Estratificado:} Esta es una técnica de muestreo que será muy útil en el modelado de los suelos agrícolas. La población se particiona en subconjuntos de diferentes tipos y homogéneos de forma que se puede realizar un MAS en cada subconjunto homogéneo de la partición. Por ejemplo, los lotes se pueden particionar como: área forestal, con problemas, bosque, construcción, etc. También es importante ver la clasificación de suelos por propiedades biológicas de los cultivos.
-    
+
     \item \textbf{Muestreo Sistemático:} En este muestreo se toma un punto aleatorio y se mide por cada $n$-ésima unidad de forma que se lleva un espaciado constante a partir del punto inicial. Por ejemplo, este tipo de muestreo es utilizado para medir el suelo cuando es rectangular a lo largo de su perímetro o también cuando es de forma irregular.
 \end{itemize}
 
@@ -317,7 +269,7 @@ Según las definiciones de arriba, cada muestra $S_i$ tiene probabilidad $P(S_i)
 
 \begin{definition}[Probabilidad de una Unidad]
     La probabilidad de que una unidad $x$ sea seleccionada en una colección de muestras $D = \{ S_1, S_2, ..., S_n \}$ se define como
-    
+
     $$
     \pi_x = P(\text{unidad $x$ está en la muestra}) = \sum \limits_{S_i \in \{ S \in D | x \in S \}} P(S_i)
     $$
@@ -357,13 +309,13 @@ Con respecto a los intervalos de confianza, se deberá repetir muchas veces el m
 
 \begin{definition}[Diseño muestral]
     Un \textbf{diseño muestral} es una función $p(X)$ que asigna una probabilidad de selección a cada posible muestra en el espacio muestral $\omega$.
-    
+
     \bigbreak
-    
+
     Sea $S^* = \mathcal{P}(U)$ el conjunto potencia de $U$, esto es, el conjunto de todas las posibles muestras de la población $U$. Un diseño muestral es \textbf{sin reemplazo} si todas las muestras en $S^*$ son sin reemplazo. Análogamente, es un muestreo \textbf{con reemplazo} si todas las muestras en $S^*$ son con reemplazo.
 
     \bigbreak
-    
+
     En una \textbf{muestra aleatoria sin reemplazo} la selección de los elementos que han sido seleccionados no vuelven a ser parte de la población. En una \textbf{muestra aleatoria con reemplazo} la selección de de los elementos que han sido seleccionados vuelven a ser parte de la población, es decir, un elemento puede ser seleccionado más de una vez.
 \end{definition}
 
@@ -375,17 +327,17 @@ Al estimar el tamaño de la muestra se tiene en cuenta otras definiciones como e
 
 \begin{enumerate}
     \item Preguntárse: ¿Qué se espera de la muestra, y cuánta precisión se necesita?, ¿Qué consecuencias tienen los resultados del muestreo?, ¿Cuánto error es tolerable?.
-    
+
     \item Encontrar una ecuación que relacione el tamaño de la muestra $n$ y las expectativas de la muestra.
-    
+
     \item Estimar cualquier cantidad desconocida y resolver para $n$.
-    
+
     \item Iterar estos pasos para obtener mejores valores de acuerdo a las expectativas. Si ni siquiera hay recursos disponibles para este proceso, entonces la investigación no se podrá llevar a cabo.
 \end{enumerate}
 
 \subsection{Muestreo Aleatorio Simple (MAS)}
 
-Este tipo de muestreo es el más básico que se puede tomar y en base a él se desarrollan en gran medida los otros tipos de muestreo más compuestos. Las condiciones para que funciones son que las unidades de la población tenga igual probabilidad de ser escogidas. Los cálculos hechos para el MAS son también extendidos por otros métodos de muestreo, ya que al final siempre conllevan con algo de aleatoriedad. 
+Este tipo de muestreo es el más básico que se puede tomar y en base a él se desarrollan en gran medida los otros tipos de muestreo más compuestos. Las condiciones para que funciones son que las unidades de la población tenga igual probabilidad de ser escogidas. Los cálculos hechos para el MAS son también extendidos por otros métodos de muestreo, ya que al final siempre conllevan con algo de aleatoriedad.
 
 \bigbreak
 
@@ -458,7 +410,7 @@ Dado el tamaño de la población $N$ y el número de muestras $n$, hacer $k=\cei
 
 \bigbreak
 
-En ciertos casos el muestreo sistemático es el mismo MAS por lo que se pueden aplicar técnicas del MAS. Otras veces funciona como un intermediario (proxy) hacia el MAS ya que como se puede notar, si la población está dispuesta de forma aleatoria entonces lo que se tendría sería básicamente un MAS. También se debe tener en cuenta que la probabilidad de un grupo de ser escogido no es la misma como en el MAS. Otro uso que puede tener este tipo de muestreo es de hacer un trabajo similar al muestreo por clúster. De estos factores depende que la muestra sea representativa ya que si la población está ordenada de acuerdo a su índice entonces la muestra no servirá (p. ej. solo salen unidades del mismo tipo al estar ordenadas por posición, si hay hombres y mujeres solo salen hombres por ser posición par). 
+En ciertos casos el muestreo sistemático es el mismo MAS por lo que se pueden aplicar técnicas del MAS. Otras veces funciona como un intermediario (proxy) hacia el MAS ya que como se puede notar, si la población está dispuesta de forma aleatoria entonces lo que se tendría sería básicamente un MAS. También se debe tener en cuenta que la probabilidad de un grupo de ser escogido no es la misma como en el MAS. Otro uso que puede tener este tipo de muestreo es de hacer un trabajo similar al muestreo por clúster. De estos factores depende que la muestra sea representativa ya que si la población está ordenada de acuerdo a su índice entonces la muestra no servirá (p. ej. solo salen unidades del mismo tipo al estar ordenadas por posición, si hay hombres y mujeres solo salen hombres por ser posición par).
 
 \bigbreak
 
@@ -488,9 +440,9 @@ Para hacer un \textbf{muestreo estratificado aleatorio} como es de esperar, se t
 
 \bigbreak
 
-Según la \textit{Guía de muestreo de suelo $\mid$ Gob.Pe} \cite{gobpe-ministerio-del-ambiente-2014}, el muestreo aleatorio estratificado se hace \say{cuando se dispone de información previa y el sitio presenta 
-características geográficas diferenciadas, es necesario estratificar o subdividir en subgrupos las 
-muestras que tienen homogeneidad en el terreno y en cada estrato se aplica un muestreo 
+Según la \textit{Guía de muestreo de suelo $\mid$ Gob.Pe} \cite{gobpe-ministerio-del-ambiente-2014}, el muestreo aleatorio estratificado se hace \say{cuando se dispone de información previa y el sitio presenta
+características geográficas diferenciadas, es necesario estratificar o subdividir en subgrupos las
+muestras que tienen homogeneidad en el terreno y en cada estrato se aplica un muestreo
 aleatorio simple de manera independiente}.
 
 \begin{figure}[H]
@@ -633,15 +585,15 @@ La captura de un arrastrero comercial que desembarca eglefino \footnote{El eglef
 \centering
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-\rowcolor[HTML]{CBCEFB} 
+\rowcolor[HTML]{CBCEFB}
 \multicolumn{1}{|c|}{\cellcolor[HTML]{CBCEFB}\textbf{Categoría}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$N_h$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$n_h$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$Sx_{hj}$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$Sx_{hj}^2$}} \\ \hline
 Pequeña                                                          & 2,432                                                        & 152                                                         & 5,284                                                            & 185,532                                                            \\ \hline
-\rowcolor[HTML]{EFEFEF} 
+\rowcolor[HTML]{EFEFEF}
 Pequeña-media                                                    & 1,656                                                        & 92                                                          & 3,817                                                            & 158,953                                                            \\ \hline
 Media                                                            & 2,268                                                        & 63                                                          & 3,033                                                            & 146,357                                                            \\ \hline
-\rowcolor[HTML]{EFEFEF} 
+\rowcolor[HTML]{EFEFEF}
 Grande                                                           & 665                                                         & 35                                                          & 2,027                                                            & 118,169                                                            \\ \hline
-\rowcolor[HTML]{FFCE93} 
+\rowcolor[HTML]{FFCE93}
 Total                                                            & 7,021                                                        & 342                                                         & 14,161                                                           & 609,011                                                            \\ \hline
 \end{tabular}
 \caption{Datos para cada estrato de la captura del barco de pesca}
@@ -665,15 +617,15 @@ también tenemos que:
 \centering
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-\rowcolor[HTML]{CBCEFB} 
+\rowcolor[HTML]{CBCEFB}
 \multicolumn{1}{|c|}{\cellcolor[HTML]{CBCEFB}\textbf{Categoría}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$x_h$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$N_hx_h$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$S_{h}^2$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{$\frac{S_{h}^2}{n_h}$}} & \textbf{$\frac{N_h^2S_h^2}{n_h}$} \\ \hline
 Pequeña                                                          & 34.763                                                      & 84,544                                                         & 12.21                                                           & 0.0803                                                                      & 474,900                           \\ \hline
-\rowcolor[HTML]{EFEFEF} 
+\rowcolor[HTML]{EFEFEF}
 Pequeña-media                                                    & 41.489                                                      & 68,706                                                         & 6.47                                                            & 0.0703                                                                      & 192,800                           \\ \hline
 Media                                                            & 48.143                                                      & 109,188                                                        & 5.48                                                            & 0.0870                                                                      & 447,500                           \\ \hline
-\rowcolor[HTML]{EFEFEF} 
+\rowcolor[HTML]{EFEFEF}
 Grande                                                           & 57.914                                                      & 38,513                                                         & 22.85                                                           & 0.6529                                                                      & 288,700                           \\ \hline
-\rowcolor[HTML]{FFCE93} 
+\rowcolor[HTML]{FFCE93}
 Total                                                            &                                                             & 300,951                                                        &                                                                 &                                                                             & 1,403,900                         \\ \hline
 \end{tabular}
 \end{table}
@@ -808,7 +760,7 @@ La biblioteca matplotlib es sugerida \cite{grus-2015} para la visualización de 
 
 \bigbreak
 
-Otras bibliotecas de interés comprenden \textbf{seaborn} derivado de matplotlib para visualizaciones más complejas y bonitas, \textbf{D3.js} para visualizaciones sostificadas e interactivas para la web, \textbf{Bokeh} para visualizaciones $3D$ en Python y \textbf{ggplot} el cual es una versión portada de la biblioteca ggplot2 del lenguaje R. 
+Otras bibliotecas de interés comprenden \textbf{seaborn} derivado de matplotlib para visualizaciones más complejas y bonitas, \textbf{D3.js} para visualizaciones sostificadas e interactivas para la web, \textbf{Bokeh} para visualizaciones $3D$ en Python y \textbf{ggplot} el cual es una versión portada de la biblioteca ggplot2 del lenguaje R.
 
 \subsubsection{Estadística}
 
@@ -844,7 +796,7 @@ Las encuestas agrícolas son muy complicadas y tienen un gran número de variabl
     \item Superficie bajo cultivos y producción.
     \item Verduras, frutas, nueces.
     \item Ganadería, avicultura, estabulación.
-    
+
     \item Pesca, caza y explotación maderera.
     \item Regadío, pozos, avenamiento y cercado.
     \item Ingresos, comercialización, gastos, ahorros.
@@ -857,7 +809,7 @@ Las encuestas agrícolas son muy complicadas y tienen un gran número de variabl
 \end{itemize}
 
 \bigbreak
-    
+
 Además de utilizar estas variables, se puede obtener más datos a partir de variables auxiliares. Con respecto a las fuentes de datos se puede acceder a los productores y las operaciones agrícolas, hogares agrícolas en relación con otros datos.
 
 \bigbreak
@@ -874,9 +826,9 @@ Para el muestreo del diagnóstico de fertilidad se diseña una estrategia con el
 
 \begin{itemize}
     \item Delimitar el terreno en áreas homogéneas llamadas \textbf{unidades de muestreo}. Para esto se consideran los atributos de características físicas, topográficas y similares.
-    
+
     \item Contar con un plano donde se vea como se dividió el terreno y con información geográfica relevante.
-    
+
     \item Otras consideraciones.
 \end{itemize}
 
@@ -905,16 +857,16 @@ Así también hay muchos otros casos donde los errores en los muestreos han sido
 \centering \tiny
 \begin{tabular}{|l|l|l|}
 \hline
-\rowcolor[HTML]{CBCEFB} 
+\rowcolor[HTML]{CBCEFB}
 \multicolumn{1}{|c|}{\cellcolor[HTML]{CBCEFB}\textbf{Tipo de error}}       & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{Causa}}                                                                                 & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{Forma de minimización}}                                                               \\ \hline
 Fundamental                                                                & \begin{tabular}[c]{@{}l@{}}Pérdida de precisión en la muestra, \\ debido a su composición física y \\ química\end{tabular}                  & \begin{tabular}[c]{@{}l@{}}Disminución del diámetro de las partículas\\  más grandes o aumento de la masa de la\\  muestra\end{tabular}   \\ \hline
-\rowcolor[HTML]{EFEFEF} 
+\rowcolor[HTML]{EFEFEF}
 \begin{tabular}[c]{@{}l@{}}Segregación \\ y agrupación\end{tabular}        & \begin{tabular}[c]{@{}l@{}}Se debe a la distribución no al azar \\ de partículas, usualmente por efecto \\ de la gravedad\end{tabular}      & \begin{tabular}[c]{@{}l@{}}Preparación al azar de muestras compuestas\\ u homogeneización y fraccionamiento de\\  la muestra\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Heterogeneidad\\  de largo alcance\end{tabular} & Error espacial y fluctuante y no a alzar                                                                                                    & \begin{tabular}[c]{@{}l@{}}Toma de muchos incrementos para formar \\ una muestra\end{tabular}                                             \\ \hline
-\rowcolor[HTML]{EFEFEF} 
+\rowcolor[HTML]{EFEFEF}
 \begin{tabular}[c]{@{}l@{}}Heterogeneidad\\  periódica\end{tabular}        & Error de fluctuación temporal o espacial                                                                                                    & \begin{tabular}[c]{@{}l@{}}Generación correcta de muestras \\ compuestas\end{tabular}                                                     \\ \hline
 \begin{tabular}[c]{@{}l@{}}Delimitación de \\ incrementos\end{tabular}     & \begin{tabular}[c]{@{}l@{}}Diseño de muestreo inapropiado y/o\\  mala selección de equipo\end{tabular}                                      & \begin{tabular}[c]{@{}l@{}}Diseño del muestreo y selección \\ apropiada de equipo\end{tabular}                                            \\ \hline
-\rowcolor[HTML]{EFEFEF} 
+\rowcolor[HTML]{EFEFEF}
 \begin{tabular}[c]{@{}l@{}}Extracción de\\  incrementos\end{tabular}       & \begin{tabular}[c]{@{}l@{}}El procedimiento de muestreo falla \\ en cuanto a la extracción precisa del\\  incremento propuesto\end{tabular} & \begin{tabular}[c]{@{}l@{}}Indispensable contar con los protocolos\\ adecuados y equipo de muestreo bien \\ diseñado\end{tabular}         \\ \hline
 Preparación                                                                & \begin{tabular}[c]{@{}l@{}}Se debe a pérdidas, contaminación \\ y/o alteración de una muestra\end{tabular}                                  & \begin{tabular}[c]{@{}l@{}}Existen técnicas de campo y laboratorio\\ para evitar el problema\end{tabular}                                 \\ \hline
 \end{tabular}
@@ -1103,13 +1055,13 @@ Imprimiendo el muestreo físico se obtuvo el conjunto de datos siguiente:
     \centering
     \begin{tabular}{|l|l|l|l|}
     \hline
-    \rowcolor[HTML]{CBCEFB} 
+    \rowcolor[HTML]{CBCEFB}
     \textbf{} & \textbf{Estrato} & \textbf{Área Cosechada (HA)} & \textbf{TA/HA Real} \\ \hline
     0         & CP 72-2086       & 1730.4                       & 8.6                 \\ \hline
-    \rowcolor[HTML]{EFEFEF} 
+    \rowcolor[HTML]{EFEFEF}
     1         & ITV 92-1424      & 325.6                        & 1.2                 \\ \hline
     2         & Ninguno          & 2414.6                       & 9.8                 \\ \hline
-    \rowcolor[HTML]{EFEFEF} 
+    \rowcolor[HTML]{EFEFEF}
     3         & CP 72-2086       & 3867.4                       & 9.9                 \\ \hline
     4         & Mex 69-290       & 1683.8                       & 4.2                 \\ \hline
     \end{tabular}
@@ -1148,21 +1100,21 @@ Para futuras versiones se tendrá en cuenta que se debería poder pasar el vecto
     \centering
     \begin{tabular}{|l|l|l|l|}
     \hline
-    \rowcolor[HTML]{CBCEFB} 
+    \rowcolor[HTML]{CBCEFB}
     \textbf{} & \textbf{Estrato}                                          & \textbf{Área Cosechada (HA)} & \textbf{TA/HA Real} \\ \hline
     0         & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} CP 72-2086} & 4773.5                       & 1.4                 \\ \hline
-    \rowcolor[HTML]{EFEFEF} 
+    \rowcolor[HTML]{EFEFEF}
     1         & {\color[HTML]{171717} CP 72-2086}                         & 2341.9                       & 5.6                 \\ \hline
     2         & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} CP 72-2086} & 148.7                        & 6.9                 \\ \hline
-    \rowcolor[HTML]{EFEFEF} 
+    \rowcolor[HTML]{EFEFEF}
     3         & {\color[HTML]{171717} CP 72-2086}                         & 1794.2                       & 0.6                 \\ \hline
     4         & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} CP 72-2086} & 2061.7                       & 3.3                 \\ \hline
     ...       & ...                                                       & ...                          & ...                 \\ \hline
     795       & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} Mex 79-431} & 899.8                        & 0.9                 \\ \hline
-    \rowcolor[HTML]{EFEFEF} 
+    \rowcolor[HTML]{EFEFEF}
     796       & {\color[HTML]{171717} Mex 79-431}                         & 4232.5                       & 8.9                 \\ \hline
     797       & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} Mex 79-431} & 827.2                        & 7.5                 \\ \hline
-    \rowcolor[HTML]{EFEFEF} 
+    \rowcolor[HTML]{EFEFEF}
     798       & {\color[HTML]{171717} Mex 79-431}                         & 2025.5                       & 6.6                 \\ \hline
     799       & \cellcolor[HTML]{FFFFFF}{\color[HTML]{171717} Mex 79-431} & 4332.8                       & 4.6                 \\ \hline
     \end{tabular}
@@ -1227,16 +1179,16 @@ sampled_yield['Error relativo (%)'] = (abs(sampled_yield['Rendimiento'] - real_y
     \centering
     \begin{tabular}{|l|l|l|l|l|l|l|}
     \hline
-    \rowcolor[HTML]{CBCEFB} 
+    \rowcolor[HTML]{CBCEFB}
       & Estrato    & \begin{tabular}[c]{@{}l@{}}TA/HA \\ Real\end{tabular} & \begin{tabular}[c]{@{}l@{}}Área Cosechada\\  (HA)\end{tabular} & Rendimiento & \begin{tabular}[c]{@{}l@{}}Rendimiento \\ Real\end{tabular} & \begin{tabular}[c]{@{}l@{}}Error \\ Relativo (\%)\end{tabular} \\ \hline
     0 & CP 72-2086 & 1947.6                                                & 960109.2                                                       & 0.0020285   & 0.0020283                                                   & 0.0086127                                                      \\ \hline
-    \rowcolor[HTML]{EFEFEF} 
+    \rowcolor[HTML]{EFEFEF}
     1 & Mex 79-431 & 1914.0                                                & 979276.8                                                       & 0.0019545   & 0.0020501                                                   & 4.6667605                                                      \\ \hline
     \end{tabular}
     \caption{Comparación de muestreo físico contra muestreo virtual}
 \end{table}
 
-Si el tamaño de muestra por estrato se baja a un valor demasiado pequeño el error relativo se vuelve muy grande en magnitudes de $20-150\%$ por lo cual esta es una forma de comprobar la configuración correcta del muestreo virtual. 
+Si el tamaño de muestra por estrato se baja a un valor demasiado pequeño el error relativo se vuelve muy grande en magnitudes de $20-150\%$ por lo cual esta es una forma de comprobar la configuración correcta del muestreo virtual.
 
 \bigbreak
 

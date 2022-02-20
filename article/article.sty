@@ -1,0 +1,61 @@
+% Copyright (c) 2021 Tobias Briones. All rights reserved.
+%
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% This file is part of Course Project at UNAH-MM700: Agricultural Soil Sampling
+% for Data Analysis.
+%
+% This source code is licensed under the Creative Commons Attribution 4.0
+% International License found in the LICENSE-CC file in the root directory of
+% this source tree or at https://spdx.org/licenses/CC-BY-4.0.html.
+
+\ProvidesPackage{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[letterpaper, portrait, margin=2cm]{geometry}
+\usepackage[style=ieee]{biblatex}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{array}
+\usepackage{dirtytalk}
+\usepackage{listings}
+
+\addbibresource{bibliography.bib}
+
+\newtheorem{definition}{Definición}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
