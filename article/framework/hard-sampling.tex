@@ -1,0 +1,70 @@
+% Copyright (c) 2021 Tobias Briones. All rights reserved.
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% This file is part of https://github.com/tobiasbriones/
+% cp-unah-mm700-agricultural-soil-sampling-for-data-analysis
+%
+% This source code is licensed under the Creative Commons Attribution 4.0
+% International License found in the LICENSE-CC file in the root directory of
+% this source tree or at https://spdx.org/licenses/CC-BY-4.0
+
+\section{Muestreo Físico}
+
+El muestreo que se suele realizar en agricultura es probablemente para los fines de análisis de fertilidad \cite{lassaga-2011} y de contaminación \cite{gobpe-ministerio-del-ambiente-2014}. Un procedimiento estándar de acuerdo a profesionales consiste de forma básica en utilizar equipo dedicado \cite{ministry-of-agriculture-food-and-fisheries-2020} o no, dependiendo si se necesitan hacer muchos muestreos o solo es una práctica amateur. Se toman unas $6 \, pulgadas$ de tierra y se recolectan en una cubeta. Este procedimiento se ha de repetir unas $10$ a $15$ veces para que la muestra sea más uniforme a fin de obtener la muestra a partir de las múltiples submuestras mencionadas. Luego se debe de mezclar la tierra de todas las submuestras. Finalmente, se toma la cantidad de muestra especificada por el laboratorio (una bolsa) de la tierra de la cubeta ya mezclada. Se deben llenar los datos y la muestra obtenida se envía para hacer el estudio. Uno de estos datos es especificar la muestra que se manda ya que pueden haber muchas muestras que se requieren diferenciar. El procedimiento se encuentra mejor documentado en el \textit{Noble Research Institute} \cite{funderburg-2014}.
+
+\bigbreak
+
+Para el muestreo del diagnóstico de fertilidad se diseña una estrategia con el siguiente estilo \cite{lassaga-2011}:
+
+\begin{itemize}
+    \item Delimitar el terreno en áreas homogéneas llamadas \textbf{unidades de muestreo}. Para esto se consideran los atributos de características físicas, topográficas y similares.
+
+    \item Contar con un plano donde se vea como se dividió el terreno y con información geográfica relevante.
+
+    \item Otras consideraciones.
+\end{itemize}
+
+Otros registros importantes en este puto son, a saber \cite{lassaga-2011}, el \textit{rendimiento} de los cultivos por áreas homogéneas e historiales con datos anteriores.
+
+\bigbreak
+
+A partir de aquí, muchas estrategias de muestreo, donde ya se han mencionado algunas, se pueden aplicar para llevar a cabo este trabajo de muestreo convencional de suelo.
+
+\subsection{Tipos de Errores}
+
+Hay varios tipos de errores al tomar muestras. Adelante se muestran algunas más comunes \cite{innec-2007}. Los errores por tener un muestreo sesgado conllevan hasta pérdidas multi-billionarias \cite{gy-1998}. El siguiente caso sucedido hace ya muchas décadas es sobre una mina que fue (Pierre, 1998):
+
+\bigbreak
+
+\say{En un caso legal entre una mina de estaño y una fundición, se demostró que el muestreo sesgado en la fundición había infravalorado los concentrados de la mina, durante un período de varios años, en un factor de $9\%$. ¿Qué industria permitiría a sabiendas que se se va a descontar el $9\%$ del valor de sus producciones? ¿Existe alguna otra operación capaz de provocar una pérdida? ¡Nunca!}
+
+\bigbreak
+
+Así también hay muchos otros casos donde los errores en los muestreos han sido muy costosos. La ventaja de hoy en día es que se cuenta con mucha tecnología a diferencia de esa época.
+
+\bigbreak
+
+% ----- TABLE
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{CBCEFB}
+\multicolumn{1}{|c|}{\cellcolor[HTML]{CBCEFB}\textbf{Tipo de error}}       & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{Causa}}                                                                                 & \multicolumn{1}{c|}{\cellcolor[HTML]{CBCEFB}\textbf{Forma de minimización}}                                                               \\ \hline
+Fundamental                                                                & \begin{tabular}[c]{@{}l@{}}Pérdida de precisión en la muestra, \\ debido a su composición física y \\ química\end{tabular}                  & \begin{tabular}[c]{@{}l@{}}Disminución del diámetro de las partículas\\  más grandes o aumento de la masa de la\\  muestra\end{tabular}   \\ \hline
+\rowcolor[HTML]{EFEFEF}
+\begin{tabular}[c]{@{}l@{}}Segregación \\ y agrupación\end{tabular}        & \begin{tabular}[c]{@{}l@{}}Se debe a la distribución no al azar \\ de partículas, usualmente por efecto \\ de la gravedad\end{tabular}      & \begin{tabular}[c]{@{}l@{}}Preparación al azar de muestras compuestas\\ u homogeneización y fraccionamiento de\\  la muestra\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Heterogeneidad\\  de largo alcance\end{tabular} & Error espacial y fluctuante y no a alzar                                                                                                    & \begin{tabular}[c]{@{}l@{}}Toma de muchos incrementos para formar \\ una muestra\end{tabular}                                             \\ \hline
+\rowcolor[HTML]{EFEFEF}
+\begin{tabular}[c]{@{}l@{}}Heterogeneidad\\  periódica\end{tabular}        & Error de fluctuación temporal o espacial                                                                                                    & \begin{tabular}[c]{@{}l@{}}Generación correcta de muestras \\ compuestas\end{tabular}                                                     \\ \hline
+\begin{tabular}[c]{@{}l@{}}Delimitación de \\ incrementos\end{tabular}     & \begin{tabular}[c]{@{}l@{}}Diseño de muestreo inapropiado y/o\\  mala selección de equipo\end{tabular}                                      & \begin{tabular}[c]{@{}l@{}}Diseño del muestreo y selección \\ apropiada de equipo\end{tabular}                                            \\ \hline
+\rowcolor[HTML]{EFEFEF}
+\begin{tabular}[c]{@{}l@{}}Extracción de\\  incrementos\end{tabular}       & \begin{tabular}[c]{@{}l@{}}El procedimiento de muestreo falla \\ en cuanto a la extracción precisa del\\  incremento propuesto\end{tabular} & \begin{tabular}[c]{@{}l@{}}Indispensable contar con los protocolos\\ adecuados y equipo de muestreo bien \\ diseñado\end{tabular}         \\ \hline
+Preparación                                                                & \begin{tabular}[c]{@{}l@{}}Se debe a pérdidas, contaminación \\ y/o alteración de una muestra\end{tabular}                                  & \begin{tabular}[c]{@{}l@{}}Existen técnicas de campo y laboratorio\\ para evitar el problema\end{tabular}                                 \\ \hline
+\end{tabular}
+\caption{Tipos de errores de muestreo y técnicas para su minimización}
+Fuente: Gobierno de México $\mid$ Instituto Nacional de Ecología y Cambio Climático \cite{innec-2007}
+\end{table}
+% ----- END TABLE
+
+Muchas de estas soluciones para este tipo común de errores deben de ayudar a mejorar las técnicas de muestreo. Definitivamente es recomendable que el usuario que realiza la muestra física sea asesorado con estas guías las cuales se extienden mucho más allá de este estudio y son fundamentales para salvar enormes cantidades económicas y tener una ciencia de datos más correcta.
