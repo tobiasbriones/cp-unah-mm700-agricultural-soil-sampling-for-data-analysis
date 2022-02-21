@@ -1,0 +1,93 @@
+% Copyright (c) 2021 Tobias Briones. All rights reserved.
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% This file is part of https://github.com/tobiasbriones/
+% cp-unah-mm700-agricultural-soil-sampling-for-data-analysis
+%
+% This source code is licensed under the Creative Commons Attribution 4.0
+% International License found in the LICENSE-CC file in the root directory of
+% this source tree or at https://spdx.org/licenses/CC-BY-4.0
+
+\subsection{Marco para Muestreo}
+
+El marco para muestreo \cite{lohr-2009} consiste en definir el espacio de la población (el universo) de donde se obtendrán las posibles muestras (subconjuntos) y estas muestras contienen las unidades que serán seleccionadas. Se nota que cada muestra tiene una probabilidad de ser escogida y para cada muestra, cada unidad tiene también una probabilidad para ser escogida.
+
+\begin{definition}[Universo]
+    El \textbf{Universo} o \textbf{Población finita} de $N$ unidades es el conjunto índice
+    $$
+    U = \{ 1, 2, ..., N \}
+    $$
+    Donde $N \in \mathbb{N}$ es el tamaño de la población.
+\end{definition}
+
+\bigbreak
+
+\begin{definition}[Muestra]
+    Sea $U$ el conjunto universo. Un conjunto $S$ es una muestra para $U$ si $S \subseteq U$.
+\end{definition}
+
+\bigbreak
+
+\begin{definition}[Probabilidad de una muestra]
+    Si $S$ es una muestra. $S$ tiene una probabilidad de ser escogida de $P(S)$.
+\end{definition}
+
+\bigbreak
+
+Notar que la probabilidad de todas las muestras de ser escogida es $1$. Esto es, $\forall S_i \in D \implies \sum \limits_{i=1}^{N} P(S_i) = 1$, donde el conjunto $D$ es el diseño escogido, esto es, una colección de subconjuntos (muestras) de $U$.
+
+\bigbreak
+
+Según las definiciones de arriba, cada muestra $S_i$ tiene probabilidad $P(S_i)$ de ser seleccionada. Ahora, cada unidad tiene una probabilidad de terminar siendo seleccionada si pertenece a una de las muestras que se seleccionó.
+
+\begin{definition}[Probabilidad de una Unidad]
+    La probabilidad de que una unidad $x$ sea seleccionada en una colección de muestras $D = \{ S_1, S_2, ..., S_n \}$ se define como
+
+    $$
+    \pi_x = P(\text{unidad $x$ está en la muestra}) = \sum \limits_{S_i \in \{ S \in D | x \in S \}} P(S_i)
+    $$
+\end{definition}
+
+\bigbreak
+
+Es decir, para calcular la probabilidad de que la unidad $x$ sea seleccionada, se hace la suma de las probabilidades de todas las muestras que contienen a $x$.
+
+\bigbreak
+
+Con respecto a los intervalos de confianza, se deberá repetir muchas veces el muestreo para poder determinar su confianza. Son útiles en el caso no-ideal donde no se conoce toda la población. Los intervalos de confianza se construyen como \cite{the-pennsylvania-state-university-no-date}:
+
+\begin{definition}[Intervalo de confianza]
+    Un \textbf{intervalo de confianza} es un rango que se calcula usando estadística para estimar un parámetro desconocido de la población con un nivel determinado de confianza.
+\end{definition}
+
+\bigbreak
+
+\begin{definition}[Sesgo de una muestra]
+    El \textbf{sesgo de una muestra} es la diferencia de la media estimada y el valor real.
+\end{definition}
+
+\bigbreak
+
+\begin{definition}[Estimación puntual]
+    La \textbf{estimación puntual} es una muestra estadística que sirve como los mejores estimados para un parámetro de la población.
+\end{definition}
+
+\bigbreak
+
+\begin{definition}[Margen de error]
+    El \textbf{margen de error} de un intervalo de confianza es la mitad de su ancho.
+\end{definition}
+
+\bigbreak
+
+\begin{definition}[Diseño muestral]
+    Un \textbf{diseño muestral} es una función $p(X)$ que asigna una probabilidad de selección a cada posible muestra en el espacio muestral $\omega$.
+
+    \bigbreak
+
+    Sea $S^* = \mathcal{P}(U)$ el conjunto potencia de $U$, esto es, el conjunto de todas las posibles muestras de la población $U$. Un diseño muestral es \textbf{sin reemplazo} si todas las muestras en $S^*$ son sin reemplazo. Análogamente, es un muestreo \textbf{con reemplazo} si todas las muestras en $S^*$ son con reemplazo.
+
+    \bigbreak
+
+    En una \textbf{muestra aleatoria sin reemplazo} la selección de los elementos que han sido seleccionados no vuelven a ser parte de la población. En una \textbf{muestra aleatoria con reemplazo} la selección de de los elementos que han sido seleccionados vuelven a ser parte de la población, es decir, un elemento puede ser seleccionado más de una vez.
+\end{definition}

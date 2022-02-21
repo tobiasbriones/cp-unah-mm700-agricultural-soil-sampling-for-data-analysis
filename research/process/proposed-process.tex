@@ -1,95 +1,14 @@
 % Copyright (c) 2021 Tobias Briones. All rights reserved.
-%
 % SPDX-License-Identifier: CC-BY-4.0
 %
-% This file is part of Course Project at UNAH-MM700: Agricultural Soil Sampling
-% for Data Analysis.
+% This file is part of https://github.com/tobiasbriones/
+% cp-unah-mm700-agricultural-soil-sampling-for-data-analysis
 %
 % This source code is licensed under the Creative Commons Attribution 4.0
 % International License found in the LICENSE-CC file in the root directory of
-% this source tree or at https://spdx.org/licenses/CC-BY-4.0.html.
+% this source tree or at https://spdx.org/licenses/CC-BY-4.0
 
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
-\usepackage[letterpaper, portrait, margin=2cm]{geometry}
-\usepackage[style=ieee]{biblatex}
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{hyperref}
-\usepackage{csquotes}
-\usepackage{mathtools}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{array}
-\usepackage{dirtytalk}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{listings}
-
-\addbibresource{bibliography.bib}
-
-\newtheorem{definition}{Definición}
-
-\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
-
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-
-\lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,
-    breaklines=true,
-    captionpos=b,
-    keepspaces=true,
-    numbers=left,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2
-}
-
-\lstset{style=mystyle}
-
-
-
-\title{Proceso Propuesto de Investigación: Modelo de Muestreo Virtual de Suelos Agrícolas en Honduras para Analítica en Base al Muestreo Aleatorio Simple y Estratificado}
-\author{Tobias Briones \bigbreak tobias.briones@unah.hn}
-\date{Diciembre 2021}
-
-\begin{document}
-
-\makeatletter
-    \begin{titlepage}
-        \begin{center}
-            \includegraphics[width=0.3\linewidth]{ref/logo-unah.png}\\[4ex]
-            {\huge \bfseries \@title
-            \vspace{1cm}}\\[2ex]
-            {\LARGE \@author}\\[50ex]
-
-            {\large
-            Proyecto de Seminario de Investigación Presentado a la\\
-            Universidad Nacional Autónoma de Honduras de la Carrera de\\
-            Licenciatura en Matemática
-            }\\[2ex]
-
-            {\large \@date}
-        \end{center}
-    \end{titlepage}
-\makeatother
-\thispagestyle{empty}
-\newpage
-
-\section{Proceso Propuesto}
+\subsection{Proceso Propuesto}
 
 Se va a enunciar a continuación un problema particular del proceso propuesto determinado por este estudio. El problema es un producto mínimo viable que funciona como artefacto de investigación. El problema consiste en una exageración donde se toma el cultivo de azúcares en Honduras (literalmente todo el territorio de Honduras) y el terreno se clasifica por departamento. Para obtener los estratos, como se ha mencionado previamente, es conveniente recurrir a las variedades por lo que será útil definir algunas variedades de azúcares. Por último se ha de elaborar el muestreo virtual y reporte de los datos obtenidos.
 
@@ -105,7 +24,7 @@ Los datos en particular se generarán de forma aleatoria al no contar con un con
 
 En los párrafos con un símbolo de implicación se dará una generalización del párrafo anterior para el analista de datos.
 
-\subsection{Enunciado}
+\subsubsection{Enunciado}
 
 Asumir que en todo el territorio de Honduras se cultiva azúcar, es decir --la finca o suelo agrícola consiste en todo el territorio del país-- y se proporcionan los datos de Zafra 2021. Mediante un SIG se ha obtenido un mapa del área clasificada por departamento, en total, 18 departamentos.
 
@@ -144,7 +63,7 @@ Se debe de obtener un muestreo físico con la siguiente estructura mínima:
 
 Donde el conjunto de datos representa los registros tomados por el usuario en ese año de zafra.
 
-\subsection{Análisis Geográfico}
+\subsubsection{Análisis Geográfico}
 
 Este proceso consiste en un análisis del SIG estándar. Se definen las constantes, se carga el archivo shapefile y se le da formato correspondiente agregando demás columnas. Se identifica como variable independiente a la columna departamento.
 
@@ -179,11 +98,11 @@ El filtrado inicial se ha definido como sigue:
 
 Para determinar las variedades insignificantes se establece una cota mínima (umbral) de área cosechada por variedad, estos datos vienen del muestreo físico. Por tanto, la condición para determinar si una variedad es significante es si pertenece a las cuatro variedades definidas arriba o si el área cosechada para esa variedad supera un umbral determinado. En este problema solo se filtrará tomando las cuatro variedades comúnes.
 
-\subsection{Muestreo Físico}
+\subsubsection{Muestreo Físico}
 
 Este \textit{DataFrame} contiene los supuestos datos de zafra $2021$ en el suelo agrícola. Es decir, todos los registros de variedades tomados en ese año. Además, en un conjunto de datos original existen muchas otras variables que pueden ser usadas para otros cálculos. Este \textit{DataFrame} solo contiene el filtrado con las columnas correspondientes para el análisis de rendimiento.
 
-\subsection{Resumen de Muestro}
+\subsubsection{Resumen de Muestro}
 
 En las siguientes dos tablas se listan los datos del SIG y del muestreo físico filtrado para análisis de rendimiento correspondientemente.
 
@@ -219,7 +138,7 @@ Tamaño de muestreo por estrato $(H_n) = t_h * factor$ donde \textit{factor} en 
 
 Con respecto al conjuntos de datos geográficos originalmente cargado, este simplemente cuenta con una (generosa) columna \textit{geography} la cual contiene la información vectorial del mapa del suelo agrícola. También fue útil la columna \textit{DEPARTMENT\_COL} conteniendo la partición hecha por el usuario. En este caso, los estratos son por variedad significante por lo que el problema debe ser tal que los subconjuntos de la partición del mapa (\say{departamentos}) contienen únicamente una variedad. Esto se detalla más en la sección de visualización abajo. A partir de estos criterios, el analista deberá poder obtener la información geográfica útil del usuario.
 
-\subsection{Visualización de Muestro}
+\subsubsection{Visualización de Muestro}
 
 En los siguientes bloques se visualizan los datos obtenidos arriba.
 
@@ -227,7 +146,7 @@ En los siguientes bloques se visualizan los datos obtenidos arriba.
 
 Por ejemplo, en los \say{departamentos} en azul (Cortés, Atlántida, Yoro,Ocotepeque, Lempira y El Paraíso) se cultiva variedad \textit{CP 72-2086}. Así, esos $6$ \say{departamentos} forman un estrato.
 
-\subsection{Modelo}
+\subsubsection{Modelo}
 
 El resultado del muestreo virtual se desarrolla en esta sección.
 
@@ -381,6 +300,7 @@ sampled_yield['Error relativo (%)'] = (abs(sampled_yield['Rendimiento'] - real_y
 
 
 \begin{table}[H]
+    \tiny
     \centering
     \begin{tabular}{|l|l|l|l|l|l|l|}
     \hline
@@ -398,37 +318,3 @@ Si el tamaño de muestra por estrato se baja a un valor demasiado pequeño el er
 \bigbreak
 
 Con esta configuración el analista podrá desplegar a producción datos históricos correctamente muestreados incrementado significativamente el tiempo de ejecución de los modelos de ciencia de datos que toman como alimento estos datos históricos y que probablemente se actualizan a menudo y corren periódicamente en la nube la cual además puede tener limitaciones de recursos.
-
-\section{Conclusiones}
-
-Se desarrolló un modelo de muestro virtual para suelo agrícola que consiste en una herramienta mínima viable como artefacto de investigación. El modelo implementó una API que es de utilidad para el analista de datos y puede ser configurada y extendida en funcionalidad.
-
-\bigbreak
-
-Se desarrolló un marco teórico para entender mejor ambas partes interesadas, a saber, la empresa de analítica y agrícola con cierto enfoque en Honduras. Esto sirve al analista a poder configurar el modelo de muestreo y obtener información clave sobre como definir los estratos y la obtención del SIG del suelo apropiada para la visualización del muestreo. Se ha tomado en cuenta el uso de encuestas como herramienta de análisis de sistemas para lograr este objetivo.
-
-\bigbreak
-
-Finalmente, se demostró el funcionamiento y eficiencia del prototipo con datos irreales y sin mucho sentido debido a las complicaciones para obtener un conjunto de datos real de acceso libre. Esto indica que el analista puede generalizar el proceso de muestreo en una base de caso por caso y que al aplicar la herramienta de muestreo será de utilidad para un caso de uso real.
-
-\subsection{Recomendaciones}
-
-Una vez aplicados los conocimientos y resultados de la tesis se recomienda:
-
-\begin{itemize}
-    \item Proyecto en \href{https://github.com/tobiasbriones/cp-unah-mm700-agricultural-soil-sampling-for-data-analysis}{GitHub}.
-
-    \item Dar uso a la POO para crear APIs que sean útiles y reutilizables.
-
-    \item Extender el modelo con cálculos estadísticos para reportar y automatizar la selección de valores (e.g. $h_n$).
-
-    \item Crear más documentación de alto nivel para entender el proceso de muestreo al trabajar en equipo y crear aplicaciones.
-\end{itemize}
-
-\section{Reconocimientos}
-
-Se agradece al equipo de \textit{PL Intelligent Solutions Co} por las visiones dadas sobre el contexto e importancia del problema de investigación en el país.
-
-\printbibliography
-
-\end{document}

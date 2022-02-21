@@ -1,0 +1,94 @@
+% Copyright (c) 2021 Tobias Briones. All rights reserved.
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% This file is part of https://github.com/tobiasbriones/
+% cp-unah-mm700-agricultural-soil-sampling-for-data-analysis
+%
+% This source code is licensed under the Creative Commons Attribution 4.0
+% International License found in the LICENSE-CC file in the root directory of
+% this source tree or at https://spdx.org/licenses/CC-BY-4.0
+
+\documentclass[conference]{IEEEtran}
+\usepackage{article}
+
+\title{
+MODELO DE MUESTREO VIRTUAL DE SUELOS AGRÍCOLAS EN HONDURAS PARA ANALÍTICA EN BASE AL MUESTREO ALEATORIO SIMPLE Y ESTRATIFICADO
+}
+
+\author{
+\IEEEauthorblockN{Tobias Briones}
+\IEEEauthorblockA{\textit{Universidad Nacional Autónoma de Honduras} \\
+\textit{Carrera de Licenciatura en Matemática}\\
+San Pedro Sula, Honduras \\
+tobias.briones@unah.hn} \\\vspace*{20pt} \normalsize
+Diciembre 2021
+}
+\date{Septiembre 2021}
+
+% ----- THIS DOCUMENT CONTAINS ALL THE BLUEPRINT PIECES TOGETHER -----
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    \includegraphics[width=0.3\linewidth]{ref/logo-unah.png}\\[4ex]
+    \textit{Universidad Nacional Autónoma de Honduras}
+
+    \bigbreak
+
+    \textit{Proyecto de Seminario de Investigación Presentado a la Carrera de Licenciatura en Matemática}
+\end{center}
+
+\begin{abstract}
+El desarrollo de soluciones de ciencia de datos para agricultura en Honduras comprende varias dificultades, a saber, los recursos de cómputo disponibles en los entornos de producción, la educación tecnológica y de toma de decisiones de los usuarios interesados y el contexto específico para poder realizar un análisis de sistemas. Esta investigación provee un modelo de muestreo virtual para el analista de datos de forma que sea posible desplegar conjuntos de datos históricos muestreados para optimizar los modelos de análisis de datos que los consumen y que se actualizan periódicamente. El resultado es un artefacto mínimo viable de investigación consistente en una API que permite utilizar modelos, visualización geográfica, reportes y resultados con un conjunto de datos propiamente muestreados mediante un muestreo aleatorio simple estratificado. Así también, se provee un marco teórico para que en conjunto, tanto el analista como la empresa agrícola converjan a una apropiada obtención de datos y puedan eventualmente ejecutar toma de decisiones informadas. Por último, estos resultados impulsan la educación tecnológica y la implementación de ciencia de datos y sistemas de información en las empresas siendo estas características en primera clase de países desarrollados.
+\end{abstract}
+
+\bigbreak
+
+\begin{abstract}
+The development of data science solutions for agriculture in Honduras involves several difficulties, namely, the computing resources available in the production environments, the technological education and decision-making of stakeholders and the specific context to be able to carry out a system analysis. This research provides a virtual sampling model for the data analyst so that it is possible to deploy sampled historical datasets to optimize the data analysis models consuming them and that are periodically updated. The result is a minimum viable research artifact consisting of an API that allows the use of models, geographic visualizations, reports, and results with a dataset properly sampled through the stratified simple random sampling. Likewise, a theoretical framework is provided so that together, both the analyst and the agricultural company converge to an appropriate data collection and can eventually execute informed decision-making. Finally, these results drive technological education and the implementation of data science and information systems into companies, which are first class characteristics of developed countries.
+\end{abstract}
+
+\bigbreak
+
+\begin{IEEEkeywords}
+sampling, analytics, agricultural-modeling, honduras, data-science
+\end{IEEEkeywords}
+
+\section{Introducción}
+\import{}{proposal/introduction/introduction}
+\import{}{proposal/introduction/justification}
+\import{}{proposal/introduction/audience}
+\import{}{proposal/introduction/scope}
+
+\section{Planteamiento del Problema}
+\import{}{proposal/statement/hypothesis}
+\import{}{proposal/statement/objectives}
+\import{}{proposal/statement/questions}
+\import{}{proposal/statement/methodology}
+
+\section{Marco Teórico}
+\import{}{framework/intro}
+\import{}{framework/sampling-framework}
+\import{}{framework/sampling-size-estimate}
+\import{}{framework/srs}
+\import{}{framework/sistematic-sampling}
+\import{}{framework/stratified-sampling}
+\import{}{framework/sampling-patterns}
+\import{}{framework/virtual-sampling}
+\import{}{framework/agriculture-surveys}
+\import{}{framework/hard-sampling}
+
+\section{Proceso Propuesto}
+
+\import{}{process/proposed-process}
+\import{}{process/conclusion}
+\import{}{process/acknowledgement}
+
+\section{Anexos}
+\import{}{annexes}
+
+\printbibliography
+
+\end{document}

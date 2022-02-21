@@ -1,0 +1,91 @@
+% Copyright (c) 2021 Tobias Briones. All rights reserved.
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% This file is part of https://github.com/tobiasbriones/
+% cp-unah-mm700-agricultural-soil-sampling-for-data-analysis
+%
+% This source code is licensed under the Creative Commons Attribution 4.0
+% International License found in the LICENSE-CC file in the root directory of
+% this source tree or at https://spdx.org/licenses/CC-BY-4.0
+
+\documentclass{report}
+\usepackage{framework}
+
+\title{Marco Teórico de Investigación: Modelo de Muestreo Virtual de Suelos Agrícolas en Honduras para Analítica en Base al Muestreo Aleatorio Simple y Estratificado}
+\author{Tobias Briones \bigbreak tobias.briones@unah.hn}
+\date{Noviembre 2021}
+
+\begin{document}
+
+\makeatletter
+    \begin{titlepage}
+        \begin{center}
+            \includegraphics[width=0.3\linewidth]{ref/logo-unah.png}\\[4ex]
+            {\huge \bfseries \@title 
+            \vspace{1cm}}\\[2ex]
+            {\LARGE \@author}\\[50ex] 
+            
+            {\large
+            Marco Teórico de Investigación Presentado a la\\
+            Universidad Nacional Autónoma de Honduras de la Carrera de\\
+            Licenciatura en Matemática
+            }\\[2ex]
+            
+            {\large \@date}
+        \end{center}
+    \end{titlepage}
+\makeatother
+\thispagestyle{empty}
+\newpage
+
+\thispagestyle{empty}
+\tableofcontents
+\listoffigures
+\newpage
+
+\chapter{Marco Teórico}
+
+\import{}{intro}
+\import{}{sampling-framework}
+\import{}{sampling-size-estimate}
+\import{}{srs}
+\import{}{sistematic-sampling}
+\import{}{stratified-sampling}
+\import{}{sampling-patterns}
+\import{}{virtual-sampling}
+\import{}{agriculture-surveys}
+\import{}{hard-sampling}
+
+\chapter{Anexos}
+
+Se ha tomado nota en pequeña parte sobre la elaboración y estructura de \textit{Manual de Elaboración y Presentación de Tesis} \cite{universidad-san-carlos-2016}, \textit{Metodología de la investigación} \cite{collado-2014}, \textit{Introducción a la metodología de la investigación científica} \cite{cabezas-2018} para esta propuesta de investigación.
+
+\section{Glosario}
+
+\begin{itemize}
+    \item \textbf{Analítica:} Proceso de detectar, interpretar y comunicar patrones significativos en los datos, así como usar herramientas para que toda la organización pueda realizar cualquier pregunta sobre cualquier información en todos los entornos y dispositivos posibles \cite{oracle-2021}.
+    
+    \item \textbf{Rendimiento:} Razón con unidad dimensional [MASA][PRODUCTO]/[ÁREA] útil para medir el beneficio producido en una zafra (p. ej. 1TA/HA 1 tonelada de azucar por hectárea).
+    
+    \item \textbf{Zafra:} Cosecha de la caña dulce (p. ej. zafra 2020-2021).
+    
+    \item \textbf{Variedad vegetal:} Grupo de plantas definido con mayor precisión, seleccionado dentro de una especie, que presentan una serie de características comunes \cite{union-internacional-para-la-proteccion-de-las-obtenciones-vegatales-upov-2021}.
+\end{itemize}
+
+\subsubsection{Términos de Dominio Específico}
+
+\begin{itemize}
+    \item \textbf{Usuario:} Empresa agrícola en Honduras.
+    
+    \item \textbf{Usuario interno:} Empleado de la empresa agrícola.
+    
+    \item \textbf{Muestreo físico:} Muestra original que el usuario tomó en su suelo agrícola.
+    
+    \item \textbf{Muestreo virtual:} Resultado o salida del modelo que se ha de desarrollar en este estudio el cual tiene como entrada el muestreo físico.
+    
+    \item \textbf{Curar:} Transformar los datos originales mediante filtros de forma que se eliminen los todos aquellos datos innecesarios o corruptos para el análisis subyacente.
+\end{itemize}
+
+\printbibliography
+
+\end{document}
