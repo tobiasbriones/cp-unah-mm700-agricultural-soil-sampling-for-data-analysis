@@ -8,7 +8,7 @@
 % International License found in the LICENSE-CC file in the root directory of
 % this source tree or at https://spdx.org/licenses/CC-BY-4.0
 
-\section{Proceso Propuesto}
+\subsection{Proceso Propuesto}
 
 Se va a enunciar a continuación un problema particular del proceso propuesto determinado por este estudio. El problema es un producto mínimo viable que funciona como artefacto de investigación. El problema consiste en una exageración donde se toma el cultivo de azúcares en Honduras (literalmente todo el territorio de Honduras) y el terreno se clasifica por departamento. Para obtener los estratos, como se ha mencionado previamente, es conveniente recurrir a las variedades por lo que será útil definir algunas variedades de azúcares. Por último se ha de elaborar el muestreo virtual y reporte de los datos obtenidos.
 
@@ -24,7 +24,7 @@ Los datos en particular se generarán de forma aleatoria al no contar con un con
 
 En los párrafos con un símbolo de implicación se dará una generalización del párrafo anterior para el analista de datos.
 
-\subsection{Enunciado}
+\subsubsection{Enunciado}
 
 Asumir que en todo el territorio de Honduras se cultiva azúcar, es decir --la finca o suelo agrícola consiste en todo el territorio del país-- y se proporcionan los datos de Zafra 2021. Mediante un SIG se ha obtenido un mapa del área clasificada por departamento, en total, 18 departamentos.
 
@@ -63,7 +63,7 @@ Se debe de obtener un muestreo físico con la siguiente estructura mínima:
 
 Donde el conjunto de datos representa los registros tomados por el usuario en ese año de zafra.
 
-\subsection{Análisis Geográfico}
+\subsubsection{Análisis Geográfico}
 
 Este proceso consiste en un análisis del SIG estándar. Se definen las constantes, se carga el archivo shapefile y se le da formato correspondiente agregando demás columnas. Se identifica como variable independiente a la columna departamento.
 
@@ -98,11 +98,11 @@ El filtrado inicial se ha definido como sigue:
 
 Para determinar las variedades insignificantes se establece una cota mínima (umbral) de área cosechada por variedad, estos datos vienen del muestreo físico. Por tanto, la condición para determinar si una variedad es significante es si pertenece a las cuatro variedades definidas arriba o si el área cosechada para esa variedad supera un umbral determinado. En este problema solo se filtrará tomando las cuatro variedades comúnes.
 
-\subsection{Muestreo Físico}
+\subsubsection{Muestreo Físico}
 
 Este \textit{DataFrame} contiene los supuestos datos de zafra $2021$ en el suelo agrícola. Es decir, todos los registros de variedades tomados en ese año. Además, en un conjunto de datos original existen muchas otras variables que pueden ser usadas para otros cálculos. Este \textit{DataFrame} solo contiene el filtrado con las columnas correspondientes para el análisis de rendimiento.
 
-\subsection{Resumen de Muestro}
+\subsubsection{Resumen de Muestro}
 
 En las siguientes dos tablas se listan los datos del SIG y del muestreo físico filtrado para análisis de rendimiento correspondientemente.
 
@@ -138,7 +138,7 @@ Tamaño de muestreo por estrato $(H_n) = t_h * factor$ donde \textit{factor} en 
 
 Con respecto al conjuntos de datos geográficos originalmente cargado, este simplemente cuenta con una (generosa) columna \textit{geography} la cual contiene la información vectorial del mapa del suelo agrícola. También fue útil la columna \textit{DEPARTMENT\_COL} conteniendo la partición hecha por el usuario. En este caso, los estratos son por variedad significante por lo que el problema debe ser tal que los subconjuntos de la partición del mapa (\say{departamentos}) contienen únicamente una variedad. Esto se detalla más en la sección de visualización abajo. A partir de estos criterios, el analista deberá poder obtener la información geográfica útil del usuario.
 
-\subsection{Visualización de Muestro}
+\subsubsection{Visualización de Muestro}
 
 En los siguientes bloques se visualizan los datos obtenidos arriba.
 
@@ -146,7 +146,7 @@ En los siguientes bloques se visualizan los datos obtenidos arriba.
 
 Por ejemplo, en los \say{departamentos} en azul (Cortés, Atlántida, Yoro,Ocotepeque, Lempira y El Paraíso) se cultiva variedad \textit{CP 72-2086}. Así, esos $6$ \say{departamentos} forman un estrato.
 
-\subsection{Modelo}
+\subsubsection{Modelo}
 
 El resultado del muestreo virtual se desarrolla en esta sección.
 
